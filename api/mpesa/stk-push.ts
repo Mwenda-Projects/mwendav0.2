@@ -1,18 +1,5 @@
 /**
  * M-Pesa STK Push API Route for Vercel
- * 
- * SETUP INSTRUCTIONS:
- * 1. Create a Safaricom Developer account at https://developer.safaricom.co.ke
- * 2. Create an app and get your Consumer Key and Consumer Secret
- * 3. Get your Business Shortcode (Paybill/Till Number)
- * 4. Generate your Passkey from the portal
- * 5. Add these environment variables in Vercel:
- *    - MPESA_CONSUMER_KEY
- *    - MPESA_CONSUMER_SECRET
- *    - MPESA_SHORTCODE (your Paybill or Till number)
- *    - MPESA_PASSKEY
- *    - MPESA_CALLBACK_URL (your callback endpoint URL)
- *    - MPESA_ENVIRONMENT (sandbox or production)
  */
 
 import type { VercelRequest, VercelResponse } from "@vercel/node";
@@ -41,7 +28,7 @@ interface STKPushResponse {
 async function getAccessToken(): Promise<string> {
   const consumerKey = process.env.MPESA_CONSUMER_KEY;
   const consumerSecret = process.env.MPESA_CONSUMER_SECRET;
-  const environment = process.env.MPESA_ENVIRONMENT || "sandbox";
+  const environment = process.env.VITE_MPESA_ENVIRONMENT || "sandbox";
   
   if (!consumerKey || !consumerSecret) {
     throw new Error("M-Pesa credentials not configured");
@@ -71,12 +58,10 @@ async function getAccessToken(): Promise<string> {
   return data.access_token;
 }
 
-// Generate password for STK Push
 function generatePassword(shortcode: string, passkey: string, timestamp: string): string {
   return Buffer.from(`${shortcode}${passkey}${timestamp}`).toString("base64");
 }
 
-// Generate timestamp in format YYYYMMDDHHmmss
 function generateTimestamp(): string {
   const now = new Date();
   const year = now.getFullYear();
@@ -93,7 +78,6 @@ export default async function handler(
   req: VercelRequest,
   res: VercelResponse
 ) {
-  // Only allow POST requests
   if (req.method !== "POST") {
     return res.status(405).json({ error: "Method not allowed" });
   }
@@ -101,7 +85,6 @@ export default async function handler(
   try {
     const { phoneNumber, amount, accountReference, transactionDesc }: STKPushRequest = req.body;
 
-    // Validate required fields
     if (!phoneNumber || !amount) {
       return res.status(400).json({ 
         success: false, 
@@ -109,11 +92,11 @@ export default async function handler(
       });
     }
 
-    // Get environment variables
-    const shortcode = process.env.MPESA_SHORTCODE;
-    const passkey = process.env.MPESA_PASSKEY;
-    const callbackUrl = process.env.MPESA_CALLBACK_URL;
-    const environment = process.env.MPESA_ENVIRONMENT || "sandbox";
+    // Match these exactly with your .env and Vercel settings
+    const shortcode = process.env.VITE_MPESA_SHORTCODE; 
+    const passkey = process.env.VITE_MPESA_PASSKEY;
+    const callbackUrl = process.env.VITE_MPESA_CALLBACK_URL;
+    const environment = process.env.VITE_MPESA_ENVIRONMENT || "sandbox";
 
     if (!shortcode || !passkey || !callbackUrl) {
       return res.status(500).json({ 
@@ -122,10 +105,7 @@ export default async function handler(
       });
     }
 
-    // Get access token
     const accessToken = await getAccessToken();
-    
-    // Generate timestamp and password
     const timestamp = generateTimestamp();
     const password = generatePassword(shortcode, passkey, timestamp);
 
@@ -133,7 +113,6 @@ export default async function handler(
       ? "https://api.safaricom.co.ke"
       : "https://sandbox.safaricom.co.ke";
 
-    // Make STK Push request
     const stkResponse = await fetch(
       `${baseUrl}/mpesa/stkpush/v1/processrequest`,
       {
