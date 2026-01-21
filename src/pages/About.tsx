@@ -4,10 +4,14 @@ import { Footer } from "@/components/blog/Footer";
 import { NewsletterSignup } from "@/components/blog/NewsletterSignup";
 import { Button } from "@/components/ui/button";
 import { Coffee, BookOpen, Camera, Heart } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 import authorImage from "@/assets/author.png";
 import authorImage3 from "@/assets/author-3.jpg";
 import post4 from "@/assets/post-4.jpg";
+
 const About = () => {
+  const navigate = useNavigate();
+
   return <div className="min-h-screen bg-background">
       <Header />
 
@@ -125,7 +129,7 @@ const About = () => {
               consider supporting my work. Every coffee helps me keep creating content 
               that matters.
             </p>
-            <Button variant="support" size="lg">
+            <Button variant="support" size="lg" onClick={() => navigate("/support")}>
               <Coffee className="h-5 w-5" />
               Buy Me a Coffee
             </Button>
@@ -141,4 +145,5 @@ const About = () => {
       <Footer />
     </div>;
 };
+
 export default About;
