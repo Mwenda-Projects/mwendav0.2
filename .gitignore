@@ -7,6 +7,15 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
+# Environment Variables (CRITICAL: Prevents your M-Pesa keys from leaking)
+.env
+*.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Dependencies
 node_modules
 dist
 dist-ssr
