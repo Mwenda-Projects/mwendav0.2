@@ -4,7 +4,6 @@ import { Mail, Send } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { toast } from "@/hooks/use-toast";
-import { supabase } from "@/integrations/supabase/client";
 
 export function NewsletterSignup() {
   const [email, setEmail] = useState("");
@@ -17,22 +16,28 @@ export function NewsletterSignup() {
     setIsLoading(true);
     
     try {
-      const { data, error } = await supabase.functions.invoke("subscribe-newsletter", {
-        body: { email },
+      // Connects directly to your Formspree endpoint
+      const response = await fetch("https://formspree.io/f/mkooewoe", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json",
+        },
+        body: JSON.stringify({ email: email }),
       });
 
-      if (error) throw error;
+      if (!response.ok) throw new Error("Submission failed");
 
       setEmail("");
       toast({
         title: "Welcome aboard! 🎉",
-        description: data.message || "You've successfully subscribed to our newsletter.",
+        description: "You've successfully subscribed to our newsletter.",
       });
     } catch (error: any) {
       console.error("Newsletter subscription error:", error);
       toast({
         title: "Subscription failed",
-        description: error.message || "Please try again later.",
+        description: "Please try again later.",
         variant: "destructive",
       });
     } finally {
@@ -70,10 +75,10 @@ export function NewsletterSignup() {
           {isLoading ? (
             "Subscribing..."
           ) : (
-            <>
+            <div className="flex items-center gap-2">
               Subscribe
               <Send className="h-4 w-4" />
-            </>
+            </div>
           )}
         </Button>
       </form>
