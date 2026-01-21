@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { motion, AnimatePresence } from "framer-motion";
 import { ThemeToggle } from "@/components/ThemeToggle";
+
 const navLinks = [{
   name: "Home",
   path: "/"
@@ -18,11 +19,25 @@ const navLinks = [{
   name: "Contact",
   path: "/contact"
 }];
+
 export function Header() {
   const navigate = useNavigate();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
+
+  // Helper function to scroll to newsletter
+  const scrollToNewsletter = () => {
+    setIsMenuOpen(false); // Close mobile menu if open
+    const element = document.getElementById('newsletter-section');
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    } else {
+      // If the user isn't on the homepage where the ID exists, navigate home first
+      navigate('/#newsletter-section');
+    }
+  };
+
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
     if (searchQuery.trim()) {
@@ -32,6 +47,7 @@ export function Header() {
       setIsMenuOpen(false);
     }
   };
+
   return <header className="sticky top-0 z-50 w-full border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-16 items-center justify-between md:h-20">
         {/* Logo */}
@@ -70,7 +86,7 @@ export function Header() {
             <Search className="h-5 w-5" />
           </Button>
           <ThemeToggle />
-          <Button variant="hero" size="sm">
+          <Button variant="hero" size="sm" onClick={scrollToNewsletter}>
             Subscribe
           </Button>
         </div>
@@ -107,7 +123,7 @@ export function Header() {
                     {link.name}
                   </Link>)}
               </nav>
-              <Button variant="hero" className="mt-4 w-full">
+              <Button variant="hero" className="mt-4 w-full" onClick={scrollToNewsletter}>
                 Subscribe
               </Button>
             </div>
