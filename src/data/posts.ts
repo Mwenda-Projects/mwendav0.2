@@ -27,7 +27,7 @@ export const posts: Post[] = [
   title: "Building Before You’re Ready",
   excerpt: "Why waiting for perfect conditions keeps most people stuck, and how starting early compounds faster than talent ever will.",
   content: `
-Most people wait.
+## Most people wait.
 
 They wait until they feel ready.  
 They wait until they have money.  
@@ -136,9 +136,9 @@ Research consistently shows that our willpower and decision-making abilities are
 
 A productive morning actually starts the night before. Here's how to set yourself up for success:
 
-- **Prepare your space**: Lay out clothes, pack bags, and clear surfaces before bed.
-- **Set intentions**: Take a moment to visualize how you want tomorrow to unfold.
-- **Digital sunset**: Put devices away at least an hour before sleep.
+**Prepare your space**: Lay out clothes, pack bags, and clear surfaces before bed.
+**Set intentions**: Take a moment to visualize how you want tomorrow to unfold.
+**Digital sunset**: Put devices away at least an hour before sleep.
 
 ## The First Hour
 
