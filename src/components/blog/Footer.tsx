@@ -95,11 +95,11 @@ export function Footer() {
   return <footer className="border-t border-border bg-muted/30">
       <div className="container py-12 md:py-16">
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
-          {/* About Section */}
+          {/* About Section - UPDATED TO MATCH HEADER */}
           <div className="lg:col-span-1">
             <Link to="/" className="mb-4 inline-block">
               <span className="font-heading text-2xl font-bold text-foreground">
-                The<span className="text-primary">Mwenda</span>
+                The<span className="text-primary">Mwenda</span> Chronicles
               </span>
             </Link>
             <p className="mb-6 max-w-xs font-body text-sm leading-relaxed text-muted-foreground">
