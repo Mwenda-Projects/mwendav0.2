@@ -23,58 +23,104 @@ export interface Post {
 
 export const posts: Post[] = [
   {
-    id: 1,
-    title: "Finding Peace in the Simple Moments",
-    excerpt: "Discover how embracing minimalism and mindfulness can transform your daily life into a more meaningful journey.",
-    content: `
-In our fast-paced world, finding peace can seem like an impossible task. We're constantly bombarded with notifications, deadlines, and endless to-do lists. But what if I told you that peace isn't something you find—it's something you create?
+  id: 1,
+  title: "Building Before You’re Ready",
+  excerpt: "Why waiting for perfect conditions keeps most people stuck, and how starting early compounds faster than talent ever will.",
+  content: `
+Most people wait.
 
-## The Art of Slowing Down
+They wait until they feel ready.  
+They wait until they have money.  
+They wait until someone validates their idea.  
 
-The first step to finding peace is learning to slow down. This doesn't mean abandoning your responsibilities or becoming unproductive. Instead, it's about being intentional with your time and energy.
+And by the time they’re “ready,” years are already gone.
 
-Start by identifying the moments in your day that feel rushed or chaotic. Maybe it's your morning routine, or perhaps it's the transition from work to home. These are the perfect opportunities to introduce small pockets of calm.
+I’ve learned this early: if you wait for perfect conditions, you will never build anything meaningful.
 
-## Mindfulness in Motion
+## Starting With What You Have
 
-Mindfulness doesn't require sitting in lotus position for hours. It can be woven into the fabric of your daily life:
+When you’re in campus, broke, inexperienced, and still figuring life out, it’s easy to believe you’re behind. The truth is—you’re early.
 
-- **Morning coffee ritual**: Instead of gulping down your coffee while checking emails, take five minutes to truly savor it. Notice the warmth of the cup, the aroma, the taste.
+Early enough to make mistakes quietly.  
+Early enough to experiment without pressure.  
+Early enough to build skills before responsibilities pile up.
 
-- **Walking meditation**: Your commute or daily walk can become a moving meditation. Pay attention to your footsteps, the rhythm of your breathing, the world around you.
+You don’t need a perfect setup. You need momentum.
 
-- **Mindful transitions**: Before starting a new task, take three deep breaths. This simple practice creates a buffer between activities and helps you arrive fully present.
+A basic laptop.  
+Internet access.  
+Curiosity.  
 
-## Creating Sacred Spaces
+That’s enough to start.
 
-Your environment profoundly affects your inner state. Consider creating small sacred spaces in your home—a cozy reading nook, a meditation corner, or simply a clutter-free area where you can retreat.
+## Progress Is Ugly at First
 
-The key isn't perfection; it's intention. A single candle on a clear surface can be enough to signal to your brain that this is a space for peace.
+No one likes to talk about this, but the early stages of building are embarrassing.
 
-## The Power of Presence
+Your first ideas won’t be impressive.  
+Your first projects won’t look clean.  
+Your first plans will probably fail.
 
-Perhaps the greatest gift we can give ourselves is presence. When we're fully here, in this moment, we realize that most of our stress comes from dwelling on the past or worrying about the future.
+That’s normal.
 
-The simple moments—sunlight streaming through a window, a child's laughter, the satisfaction of a completed task—become profound when we're truly present to experience them.
+The goal isn’t to look smart. The goal is to **get better faster than everyone else who’s still planning**.
 
-## Moving Forward
+Every imperfect project teaches you something no tutorial ever will.
 
-Finding peace isn't a destination; it's a practice. Some days will be easier than others, and that's perfectly okay. What matters is the intention to return, again and again, to the present moment.
+## Discipline Beats Motivation
 
-Start small. Choose one practice from this article and commit to it for a week. Notice how these small changes ripple outward, transforming not just moments, but your entire approach to life.
+Motivation is unreliable. Discipline is boring—but it works.
 
-Peace is not the absence of chaos—it's the ability to find calm within it.
-    `,
-    category: "Lifestyle",
-    date: "Dec 10, 2024",
-    readTime: "5 min read",
-    image: heroBlog,
-    slug: "finding-peace",
-    author: {
-      name: "Sarah Mitchell",
-      avatar: post1
-    }
-  },
+On most days, you won’t feel inspired. You’ll feel tired, distracted, or unsure. That’s when discipline matters.
+
+Show up anyway.  
+Do the work anyway.  
+Learn one thing anyway.  
+
+Consistency compounds quietly, and one day people will call it “talent.”
+
+## Thinking Long-Term While Acting Daily
+
+Big goals are built through small, repeated actions.
+
+You do not build a company in a day.  
+You do not master a skill in a week.  
+You do not change your life overnight.
+
+But you *can* take one step today.
+
+One page written.  
+One concept learned.  
+One system improved.  
+
+Those steps stack up faster than you think.
+
+## Why I’m Documenting the Journey
+
+This blog isn’t about pretending to have everything figured out.
+
+It’s about documenting growth.  
+About thinking in public.  
+About leaving a trail of lessons—for myself and for anyone walking a similar path.
+
+If you are early in your journey and feeling behind, understand this:
+
+You’re not late.  
+You’re just getting started.
+
+And starting is the hardest part.
+  `,
+  category: "Growth",
+  date: "Jan 22, 2026",
+  readTime: "4 min read",
+  image: heroBlog,
+  slug: "building-before-youre-ready",
+  author: {
+    name: "Antony Mwenda",
+    avatar: post1
+  }
+},
+
   {
     id: 2,
     title: "The Art of Productive Mornings",
