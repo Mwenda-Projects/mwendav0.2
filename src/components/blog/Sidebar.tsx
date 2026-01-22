@@ -29,81 +29,44 @@ const LinkedInIcon = () => (
   </svg>
 );
 
-const categories = [{
-  name: "Lifestyle",
-  count: 12,
-  slug: "/categories?filter=lifestyle"
-}, {
-  name: "Travel",
-  count: 8,
-  slug: "/categories?filter=travel"
-}, {
-  name: "Wellness",
-  count: 10,
-  slug: "/categories?filter=wellness"
-}, {
-  name: "Productivity",
-  count: 6,
-  slug: "/categories?filter=productivity"
-}, {
-  name: "Home & Decor",
-  count: 5,
-  slug: "/categories?filter=home-decor"
-}];
-const popularPosts = [{
-  title: "10 Morning Habits for a Calmer Day",
-  slug: "/post/productive-mornings"
-}, {
-  title: "The Art of Slow Living",
-  slug: "/post/slow-living"
-}, {
-  title: "Coastal Wanderings: A Photo Essay",
-  slug: "/post/coastal-wanderings"
-}];
-const socialLinks = [{
-  icon: Instagram,
-  href: "https://instagram.com/mwendahub",
-  label: "Instagram"
-}, {
-  icon: XIcon,
-  href: "https://x.com/MwendaHub",
-  label: "X"
-}, {
-  icon: TikTokIcon,
-  href: "https://tiktok.com/@mwendahub",
-  label: "TikTok"
-}, {
-  icon: FacebookIcon,
-  href: "https://facebook.com/MwendaHub",
-  label: "Facebook"
-}, {
-  icon: LinkedInIcon,
-  href: "https://linkedin.com/in/mwendahub",
-  label: "LinkedIn"
-}, {
-  icon: Youtube,
-  href: "https://youtube.com/@MwendaHub",
-  label: "YouTube"
-}];
+const categories = [
+  { name: "Hustles & Money-Making", slug: "/categories?filter=hustles" },
+  { name: "Tech & Productivity", slug: "/categories?filter=tech" },
+  { name: "Civil Engineering Journey", slug: "/categories?filter=engineering" },
+  { name: "Entrepreneurship & Scaling", slug: "/categories?filter=entrepreneurship" },
+  { name: "Personal Narratives", slug: "/categories?filter=narratives" },
+  { name: "AI & Automation", slug: "/categories?filter=ai-automation" }
+];
+
+const popularPosts = [
+  { title: "Building Civaro Engineering from Scratch", slug: "/post/building-civaro" },
+  { title: "Top AI Tools for Student Entrepreneurs", slug: "/post/ai-tools" },
+  { title: "Scaling a Campus Side Hustle", slug: "/post/scaling-hustles" }
+];
+
+const socialLinks = [
+  { icon: Instagram, href: "https://instagram.com/mwendahub", label: "Instagram" },
+  { icon: XIcon, href: "https://x.com/MwendaHub", label: "X" },
+  { icon: TikTokIcon, href: "https://tiktok.com/@mwendahub", label: "TikTok" },
+  { icon: FacebookIcon, href: "https://facebook.com/MwendaHub", label: "Facebook" },
+  { icon: LinkedInIcon, href: "https://linkedin.com/in/mwendahub", label: "LinkedIn" },
+  { icon: Youtube, href: "https://youtube.com/@MwendaHub", label: "YouTube" }
+];
+
 export function Sidebar() {
-  return <aside className="space-y-8">
+  return (
+    <aside className="space-y-8">
       {/* Author Bio */}
-      <motion.div initial={{
-      opacity: 0,
-      x: 20
-    }} animate={{
-      opacity: 1,
-      x: 0
-    }} className="rounded-xl border border-border bg-card p-6 shadow-soft">
+      <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} className="rounded-xl border border-border bg-card p-6 shadow-soft">
         <div className="mb-4 flex items-center gap-4">
           <img alt="Author" className="h-16 w-16 rounded-full object-cover ring-2 ring-primary/20" src={authorImage} />
           <div>
             <h3 className="font-heading text-lg font-semibold text-card-foreground">Antony Mwenda</h3>
-            <p className="text-sm text-muted-foreground">Writer & Creator</p>
+            <p className="text-sm text-muted-foreground">Engineer & Entrepreneur</p>
           </div>
         </div>
         <p className="mb-4 font-body text-sm leading-relaxed text-muted-foreground">
-          Sharing stories about mindful living, slow travel, and finding beauty in everyday moments. Welcome to my little corner of the internet.
+          Founder of Civaro Engineering Ltd. Documenting my journey through civil engineering, scaling ventures, and using AI to drive productivity.
         </p>
         <Link to="/about">
           <Button variant="outline" size="sm" className="w-full">
@@ -113,74 +76,51 @@ export function Sidebar() {
       </motion.div>
 
       {/* Buy Me a Coffee */}
-      <motion.div initial={{
-      opacity: 0,
-      x: 20
-    }} animate={{
-      opacity: 1,
-      x: 0
-    }} transition={{
-      delay: 0.1
-    }} className="overflow-hidden rounded-xl border border-primary/20 bg-gradient-to-br from-primary/5 to-accent/5 p-6 shadow-soft">
+      <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.1 }} className="overflow-hidden rounded-xl border border-primary/20 bg-gradient-to-br from-primary/5 to-accent/5 p-6 shadow-soft">
         <div className="mb-4 flex items-center gap-3">
           <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary/10">
             <Coffee className="h-6 w-6 text-primary" />
           </div>
           <h3 className="font-heading text-lg font-semibold text-card-foreground">
-            Support My Work
+            Support My Journey
           </h3>
         </div>
         <p className="mb-4 font-body text-sm leading-relaxed text-muted-foreground">
-          If you enjoy my content and find it valuable, consider buying me a coffee! Your support helps me keep creating.
+          If you find my insights on engineering and business valuable, consider supporting my work. Your support keeps this blog running!
         </p>
         <Link to="/support">
           <Button variant="support" className="w-full">
             <Coffee className="h-4 w-4" />
-            Buy Me a Coffee
+            Support via M-Pesa
           </Button>
         </Link>
       </motion.div>
 
       {/* Categories */}
-      <motion.div initial={{
-      opacity: 0,
-      x: 20
-    }} animate={{
-      opacity: 1,
-      x: 0
-    }} transition={{
-      delay: 0.2
-    }} className="rounded-xl border border-border bg-card p-6 shadow-soft">
+      <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.2 }} className="rounded-xl border border-border bg-card p-6 shadow-soft">
         <h3 className="mb-4 font-heading text-lg font-semibold text-card-foreground">
           Categories
         </h3>
         <ul className="space-y-2">
-          {categories.map(category => <li key={category.name}>
+          {categories.map(category => (
+            <li key={category.name}>
               <Link to={category.slug} className="flex items-center justify-between rounded-lg px-3 py-2 font-body text-sm text-muted-foreground transition-colors hover:bg-muted hover:text-foreground">
                 <span>{category.name}</span>
-                <span className="rounded-full bg-muted px-2 py-0.5 text-xs">
-                  {category.count}
-                </span>
+                {/* Number count removed for a cleaner UI */}
               </Link>
-            </li>)}
+            </li>
+          ))}
         </ul>
       </motion.div>
 
       {/* Popular Posts */}
-      <motion.div initial={{
-      opacity: 0,
-      x: 20
-    }} animate={{
-      opacity: 1,
-      x: 0
-    }} transition={{
-      delay: 0.3
-    }} className="rounded-xl border border-border bg-card p-6 shadow-soft">
+      <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.3 }} className="rounded-xl border border-border bg-card p-6 shadow-soft">
         <h3 className="mb-4 font-heading text-lg font-semibold text-card-foreground">
           Popular Posts
         </h3>
         <ul className="space-y-3">
-          {popularPosts.map((post, index) => <li key={post.slug}>
+          {popularPosts.map((post, index) => (
+            <li key={post.slug}>
               <Link to={post.slug} className="group flex items-start gap-3">
                 <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-primary/10 text-xs font-medium text-primary">
                   {index + 1}
@@ -189,7 +129,8 @@ export function Sidebar() {
                   {post.title}
                 </span>
               </Link>
-            </li>)}
+            </li>
+          ))}
         </ul>
       </motion.div>
 
@@ -197,23 +138,18 @@ export function Sidebar() {
       <NewsletterSignup />
 
       {/* Social Links */}
-      <motion.div initial={{
-      opacity: 0,
-      x: 20
-    }} animate={{
-      opacity: 1,
-      x: 0
-    }} transition={{
-      delay: 0.5
-    }} className="rounded-xl border border-border bg-card p-6 shadow-soft">
+      <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.5 }} className="rounded-xl border border-border bg-card p-6 shadow-soft">
         <h3 className="mb-4 font-heading text-lg font-semibold text-card-foreground">
           Follow Along
         </h3>
         <div className="flex items-center gap-3">
-          {socialLinks.map(social => <a key={social.label} href={social.href} aria-label={social.label} className="flex h-10 w-10 items-center justify-center rounded-full bg-muted text-muted-foreground transition-colors hover:bg-primary hover:text-primary-foreground">
+          {socialLinks.map(social => (
+            <a key={social.label} href={social.href} target="_blank" rel="noopener noreferrer" aria-label={social.label} className="flex h-10 w-10 items-center justify-center rounded-full bg-muted text-muted-foreground transition-colors hover:bg-primary hover:text-primary-foreground">
               <social.icon className="h-5 w-5" />
-            </a>)}
+            </a>
+          ))}
         </div>
       </motion.div>
-    </aside>;
+    </aside>
+  );
 }

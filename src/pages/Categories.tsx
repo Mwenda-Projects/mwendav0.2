@@ -12,39 +12,40 @@ import post5 from "@/assets/post-5.jpg";
 
 const categories = [
   {
-    name: "Lifestyle",
-    description: "Intentional living, slow mornings, and finding joy in the everyday",
-    postCount: 12,
+    name: "Hustles & Money-Making",
+    description: "Strategies on side hustles, freelance gigs, and campus businesses.",
     image: post1,
-    slug: "/categories/lifestyle",
+    slug: "/categories/hustles",
   },
   {
-    name: "Travel",
-    description: "Slow travel adventures and discovering hidden gems around the world",
-    postCount: 8,
+    name: "Tech & Productivity",
+    description: "Mastering AI tools, web apps, and software for maximum efficiency.",
     image: post2,
-    slug: "/categories/travel",
+    slug: "/categories/tech",
   },
   {
-    name: "Food & Recipes",
-    description: "Simple, nourishing meals and the joy of gathering around the table",
-    postCount: 10,
+    name: "Civil Engineering Journey",
+    description: "Tutorials and reflections on building Civaro Engineering Ltd from scratch.",
     image: post3,
-    slug: "/categories/food",
+    slug: "/categories/engineering",
   },
   {
-    name: "Home & Decor",
-    description: "Creating calm, beautiful spaces that nurture your well-being",
-    postCount: 6,
+    name: "Entrepreneurship & Scaling",
+    description: "Lessons on starting small ventures and scaling them into businesses.",
     image: post4,
-    slug: "/categories/home-decor",
+    slug: "/categories/entrepreneurship",
   },
   {
-    name: "Wellness",
-    description: "Self-care rituals, mindfulness practices, and holistic health",
-    postCount: 9,
+    name: "Personal Narratives",
+    description: "Life lessons, student life reflections, and decision-making processes.",
     image: post5,
-    slug: "/categories/wellness",
+    slug: "/categories/narratives",
+  },
+  {
+    name: "AI & Automation",
+    description: "How AI assists with content creation, business, and daily efficiency.",
+    image: post1, // You can reuse or add a new post6 image here
+    slug: "/categories/ai-automation",
   },
 ];
 
@@ -63,7 +64,7 @@ const Categories = () => {
             Explore Topics
           </h1>
           <p className="mx-auto max-w-2xl font-body text-lg text-muted-foreground">
-            Dive into the themes that inspire mindful living and everyday joy
+            Insights on engineering, entrepreneurship, and the future of tech.
           </p>
         </motion.div>
 
@@ -90,9 +91,7 @@ const Categories = () => {
                     <h2 className="mb-1 font-heading text-2xl font-bold text-primary-foreground">
                       {category.name}
                     </h2>
-                    <p className="text-sm text-primary-foreground/70">
-                      {category.postCount} articles
-                    </p>
+                    {/* Removed the article count display here */}
                   </div>
                 </div>
                 <div className="p-5">
