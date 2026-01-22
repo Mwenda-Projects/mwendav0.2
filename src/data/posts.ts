@@ -23,637 +23,137 @@ export interface Post {
 
 export const posts: Post[] = [
   {
-  id: 1,
-  title: "Building Before You’re Ready",
-  excerpt: "Why waiting for perfect conditions keeps most people stuck, and how starting early compounds faster than talent ever will.",
-  content: `
+    id: 1,
+    title: "Building Before You’re Ready",
+    excerpt: "Why waiting for perfect conditions keeps most people stuck, and how starting early compounds faster than talent ever will.",
+    content: `
 ## Most people wait.
 
-They wait until they feel ready.  
-They wait until they have money.  
-They wait until someone validates their idea.  
-
-And by the time they’re “ready,” years are already gone.
+They wait until they feel ready. They wait until they have money. They wait until someone validates their idea. And by the time they’re “ready,” years are already gone.
 
 I’ve learned this early: if you wait for perfect conditions, you will never build anything meaningful.
 
 ## Starting With What You Have
-
 When you’re in campus, broke, inexperienced, and still figuring life out, it’s easy to believe you’re behind. The truth is—you’re early.
 
-Early enough to make mistakes quietly.  
-Early enough to experiment without pressure.  
-Early enough to build skills before responsibilities pile up.
-
-You don’t need a perfect setup. You need momentum.
-
-A basic laptop.  
-Internet access.  
-Curiosity.  
-
-That’s enough to start.
-
-## Progress Is Ugly at First
-
-No one likes to talk about this, but the early stages of building are embarrassing.
-
-Your first ideas won’t be impressive.  
-Your first projects won’t look clean.  
-Your first plans will probably fail.
-
-That’s normal.
-
-The goal isn’t to look smart. The goal is to **get better faster than everyone else who’s still planning**.
-
-Every imperfect project teaches you something no tutorial ever will.
-
-## Discipline Beats Motivation
-
-Motivation is unreliable. Discipline is boring—but it works.
-
-On most days, you won’t feel inspired. You’ll feel tired, distracted, or unsure. That’s when discipline matters.
-
-Show up anyway.  
-Do the work anyway.  
-Learn one thing anyway.  
-
-Consistency compounds quietly, and one day people will call it “talent.”
-
-## Thinking Long-Term While Acting Daily
-
-Big goals are built through small, repeated actions.
-
-You do not build a company in a day.  
-You do not master a skill in a week.  
-You do not change your life overnight.
-
-But you *can* take one step today.
-
-One page written.  
-One concept learned.  
-One system improved.  
-
-Those steps stack up faster than you think.
+Early enough to make mistakes quietly. Early enough to experiment without pressure. Early enough to build skills before responsibilities pile up.
 
 ## Why I’m Documenting the Journey
-
-This blog isn’t about pretending to have everything figured out.
-
-It’s about documenting growth.  
-About thinking in public.  
-About leaving a trail of lessons—for myself and for anyone walking a similar path.
-
-If you are early in your journey and feeling behind, understand this:
-
-You’re not late.  
-You’re just getting started.
-
-And starting is the hardest part.
-  `,
-  category: "Growth",
-  date: "Jan 22, 2026",
-  readTime: "4 min read",
-  image: heroBlog,
-  slug: "building-before-youre-ready",
-  author: {
-    name: "Antony Mwenda",
-    avatar: post1
-  }
-},
-
+This blog isn’t about pretending to have everything figured out. It’s about documenting growth. About thinking in public. About leaving a trail of lessons—for myself and for anyone walking a similar path.
+    `,
+    category: "Entrepreneurship",
+    date: "Jan 22, 2026",
+    readTime: "4 min read",
+    image: heroBlog,
+    slug: "building-before-youre-ready",
+    author: {
+      name: "Antony Mwenda",
+      avatar: post1
+    }
+  },
   {
     id: 2,
-    title: "The Art of Productive Mornings",
-    excerpt: "A comprehensive guide to creating morning routines that set you up for success and inner calm.",
+    title: "Civaro Engineering: The Vision for 2026",
+    excerpt: "How I am building a civil engineering firm from the ground up while still navigating the academic world.",
     content: `
-How you start your morning sets the tone for your entire day. A chaotic, rushed morning often leads to a scattered, stressful day. But a mindful, intentional morning? That's the foundation for clarity, focus, and inner peace.
+## From Blueprint to Reality
 
-## Why Mornings Matter
+Building **Civaro Engineering Ltd** isn't just about business; it's about solving infrastructure challenges with a fresh, tech-first perspective. 
 
-Research consistently shows that our willpower and decision-making abilities are strongest in the morning. By front-loading important activities and self-care rituals, we're working with our biology, not against it.
+### The Foundation
+Most people think you need a massive office to start an engineering firm. I started with a laptop and a copy of AutoCAD. The goal is to bridge the gap between theoretical classroom knowledge and the grit of the Kenyan construction site.
 
-## The Night Before
+### Challenges of a Student Founder
+1. **Time Management:** Balancing site visits with lecture hours.
+2. **Credibility:** Convincing clients that a young engineer can deliver world-class results.
+3. **Scaling:** Moving from solo consulting to a structured team.
 
-A productive morning actually starts the night before. Here's how to set yourself up for success:
-
-**Prepare your space**: Lay out clothes, pack bags, and clear surfaces before bed.
-**Set intentions**: Take a moment to visualize how you want tomorrow to unfold.
-**Digital sunset**: Put devices away at least an hour before sleep.
-
-## The First Hour
-
-The first hour after waking is precious. Protect it fiercely:
-
-**1. Resist the urge to check your phone** - Your morning should belong to you, not your inbox.
-
-**2. Hydrate** - Your body is dehydrated after sleep. Start with a full glass of water.
-
-**3. Move your body** - Even five minutes of stretching wakes up your nervous system.
-
-**4. Nourish your mind** - Whether through meditation, journaling, or reading, give your mind positive input before the world demands your attention.
-
-## Creating Your Ritual
-
-The perfect morning routine is deeply personal. Here are questions to guide you:
-
-- What activities energize me?
-- What do I wish I had more time for?
-- How do I want to feel by the time I start work?
-
-Experiment with different combinations until you find what works. And remember—flexibility is key. The goal isn't perfection; it's intention.
-
-## Common Pitfalls
-
-**Trying to do too much**: Start with just one or two morning practices. Build gradually.
-
-**Hitting snooze**: Those extra minutes of fragmented sleep actually make you more tired. Place your alarm across the room if needed.
-
-**Skipping weekends**: Consistency builds habits. Keep a modified version of your routine on days off.
-
-## The Ripple Effect
-
-When you invest in your mornings, you're investing in your entire life. The calm and clarity you cultivate in those early hours doesn't disappear when you step out the door—it becomes the lens through which you experience everything.
-
-Start tomorrow. Wake up fifteen minutes earlier. Use that time for something that matters to you. That's it. That's the beginning of transformation.
+Civaro is more than a name; it's a commitment to precision and integrity in the built environment.
     `,
-    category: "Productivity",
-    date: "Dec 8, 2024",
-    readTime: "7 min read",
+    category: "Civil Engineering Journey",
+    date: "Jan 20, 2026",
+    readTime: "6 min read",
     image: post1,
-    slug: "productive-mornings",
+    slug: "civaro-engineering-vision",
     author: {
-      name: "Sarah Mitchell",
+      name: "Antony Mwenda",
       avatar: post1
     }
   },
   {
     id: 3,
-    title: "Coastal Wanderings: A Photo Essay",
-    excerpt: "Join me on a visual journey through serene coastlines and the lessons they teach us about life.",
+    title: "AI Tools That Run My Business",
+    excerpt: "A deep dive into the automation stack I use to handle content creation, site reports, and project management.",
     content: `
-There's something about the coast that strips away pretense. Standing at the edge of the land, watching waves arrive from distant horizons, we're reminded of both our smallness and our connection to something vast.
+## Work Smarter, Not Harder
 
-## The Call of the Sea
+In 2026, if you aren't using AI, you are working 10x harder than necessary. Here is the stack I use to keep my ventures running while I'm in class.
 
-I've always been drawn to coastlines. Not the crowded beaches of summer vacation, but the quiet shores of early morning and off-season—where the only soundtrack is wind, waves, and the occasional cry of gulls.
+### 1. Project Management
+I use AI-integrated tools to track construction milestones at Civaro. It predicts delays before they happen based on weather data and supply chain speed.
 
-## Lessons from the Tide
+### 2. Content Creation
+This very blog uses AI as a thought partner. It helps me structure my reflections and polish my technical tutorials so they are easy for everyone to read.
 
-The ocean is perhaps nature's greatest teacher of impermanence. Every wave that reaches the shore is unique—never before seen, never to be repeated. And yet they keep coming, an endless meditation on the beauty of the present moment.
-
-**Lesson 1: Let go of what the tide takes**
-
-The sea doesn't cling to the sand it washes over. It touches, then releases, then returns. There's profound wisdom in this rhythm of engagement and release.
-
-**Lesson 2: Trust the rhythm**
-
-Low tide always returns to high. Storms pass. Calm follows chaos. The coast teaches us to trust in cycles larger than ourselves.
-
-**Lesson 3: Find your edge**
-
-The shoreline is neither land nor sea—it's the liminal space between. Sometimes the most interesting place to be is on the edge, where two worlds meet.
-
-## Morning Light
-
-My favorite time on the coast is just after dawn. The light is soft, the colors are muted, and there's a quality of stillness that makes everything feel possible.
-
-I've learned to wake before sunrise when I'm near the water. Not out of discipline, but out of love for those quiet hours when the world feels newly made.
-
-## The Practice of Wandering
-
-I don't hike the coast with destinations in mind. I wander—following whatever catches my eye, stopping when something asks to be observed more closely.
-
-A tide pool. A weathered piece of driftwood. The way light filters through sea fog. These small encounters become the texture of the experience.
-
-## Bringing the Coast Home
-
-You don't need to live by the sea to carry its lessons with you:
-
-- Practice the rhythm of engagement and release in your daily life
-- Trust in the larger cycles, even when you can't see where they're going
-- Make time for wandering without purpose
-- Seek out the edges—the liminal spaces where growth happens
-
-The coast will always be there, waiting. But its wisdom is portable—carried in the sound of waves, the smell of salt air, and the memory of standing at the edge of the world, fully alive.
+### 3. Automation
+From automated invoicing to M-Pesa payment reconciliations, automation is the only reason I haven't burnt out yet.
     `,
-    category: "Travel",
-    date: "Dec 5, 2024",
-    readTime: "4 min read",
+    category: "AI & Automation",
+    date: "Jan 18, 2026",
+    readTime: "5 min read",
     image: post2,
-    slug: "coastal-wanderings",
+    slug: "ai-tools-business",
     author: {
-      name: "Sarah Mitchell",
+      name: "Antony Mwenda",
       avatar: post1
     }
   },
   {
     id: 4,
-    title: "The Art of Slow Living",
-    excerpt: "Learn how to embrace a slower pace of life and find more meaning in your daily routines through intentional choices.",
+    title: "The Campus Hustler’s Manifesto",
+    excerpt: "Side hustles aren't just for pocket money—they are your real-world MBA. Here is how to start.",
     content: `
-In a world that celebrates busyness as a badge of honor, choosing to slow down is a radical act. Slow living isn't about doing everything at a snail's pace—it's about finding the right pace for you.
+## The Side Hustle Advantage
 
-## What Slow Living Isn't
+Don't just graduate with a degree; graduate with a portfolio. Whether it's selling gear, freelance design, or running a small agency, the lessons are universal.
 
-Let's clear up some misconceptions:
-
-- It's not about being unproductive
-- It's not only for people with flexible schedules
-- It's not about rejecting technology entirely
-- It's not a privilege only some can afford
-
-## What Slow Living Is
-
-Slow living is about intentionality. It's choosing quality over quantity, depth over breadth, presence over productivity.
-
-It's asking: "Does this align with my values?" before saying yes to commitments. It's recognizing that your time and energy are finite resources worthy of protection.
-
-## Practical Steps to Slow Down
-
-**1. Audit your commitments**
-
-List everything that regularly demands your time. For each item, ask: Does this bring value to my life? Is it necessary? Could it be simplified?
-
-**2. Create margins**
-
-Build buffer time between activities. The space between things is where life happens.
-
-**3. Single-task**
-
-Multitasking is a myth that fragments our attention. Do one thing at a time, fully.
-
-**4. Embrace boredom**
-
-Boredom is the birthplace of creativity. Resist the urge to fill every moment with stimulation.
-
-**5. Protect your mornings**
-
-Keep your first hours free from external demands when possible. This sets a calm tone for the day.
-
-## The Slow Living Home
-
-Your environment shapes your pace. Consider:
-
-- Decluttering spaces that feel chaotic
-- Creating cozy corners for rest and reflection
-- Reducing visual noise (fewer decorations, calmer colors)
-- Introducing elements from nature
-
-## Slow Living in Relationships
-
-Slow living extends to how we connect with others:
-
-- Choose deep conversations over superficial exchanges
-- Give people your undivided attention
-- Prioritize quality time over Instagram-worthy experiences
-- Learn to be fully present with loved ones
-
-## The Paradox of Slow
-
-Here's the beautiful paradox: when you slow down, you often accomplish more of what matters. Energy isn't wasted on urgency and anxiety. Decisions improve because you're not rushing. Relationships deepen because you're present.
-
-Slow living isn't a destination—it's a continuous practice of choosing intention over autopilot, presence over distraction, meaning over busyness.
-
-Start today. Pick one area of your life and slow it down. Notice what opens up when you stop rushing through.
+**Lesson 1: Cash flow is king.** Understanding how money moves is more important than your GPA.
+**Lesson 2: Customer service.** Dealing with a difficult client in campus prepares you for the corporate world.
+**Lesson 3: Failure is cheap.** If your campus business fails, you still have your room and your meal card. Take the risk now.
     `,
-    category: "Lifestyle",
-    date: "Dec 10, 2024",
-    readTime: "6 min read",
-    image: post1,
-    slug: "slow-living",
+    category: "Hustles & Money-Making",
+    date: "Jan 15, 2026",
+    readTime: "7 min read",
+    image: post3,
+    slug: "campus-hustler-manifesto",
     author: {
-      name: "Sarah Mitchell",
+      name: "Antony Mwenda",
       avatar: post1
     }
   },
   {
     id: 5,
-    title: "Sunrise Walks: A Photo Journey",
-    excerpt: "Join me on early morning beach walks that have transformed my perspective on starting each day with intention.",
+    title: "Productivity for the Overwhelmed",
+    excerpt: "How to manage a degree, a startup, and a personal life without losing your mind.",
     content: `
-Six months ago, I started waking before dawn to walk along the beach. What began as an experiment has become the most treasured part of my day.
+## The Myth of Balance
 
-## The Decision
+There is no such thing as a 50/50 balance. There is only prioritization. 
 
-I'd read about the benefits of morning light exposure—better sleep, improved mood, increased energy. But honestly? I was skeptical. I've never been a morning person.
+### My System:
+- **Deep Work Blocks:** 2 hours every morning dedicated to Civaro Engineering.
+- **The "No-Phone" Zone:** No social media until 12 PM.
+- **Weekly Reviews:** Every Sunday, I audit where my time went.
 
-Still, something called me to try. Maybe it was burnout. Maybe it was curiosity. Whatever the reason, I set my alarm for 5:30 AM and committed to one week.
-
-## The First Morning
-
-That first walk was uncomfortable. My body protested the early hour. The air was cold. I questioned my sanity.
-
-But then the sky began to change. First a deep indigo, then ribbons of pink and gold. By the time the sun crested the horizon, I was crying—overwhelmed by beauty I'd been sleeping through for years.
-
-## What I've Learned
-
-**The world is different at dawn**
-
-There's a quality of stillness in the pre-dawn hours that doesn't exist at any other time. The world feels held, waiting, full of possibility.
-
-**Small things become magnificent**
-
-In the soft morning light, everything is beautiful. Dewdrops on sea grass. Footprints in wet sand. The way light spreads across the water.
-
-**Movement is meditation**
-
-Walking without destination, syncing my breath with my steps, I've discovered a form of moving meditation that quiets my busy mind.
-
-## The Ritual
-
-My morning walks have developed their own rhythm:
-
-1. Wake naturally (no alarm needed anymore)
-2. Warm drink in silence
-3. Drive to the beach (still dark)
-4. Walk until sunrise
-5. Find a spot to sit and watch
-6. Return home, heart full
-
-## The Ripple Effects
-
-These walks have changed more than my mornings. I sleep better. I'm more patient. I notice beauty more often throughout the day. I've made peace with solitude.
-
-The camera I bring has become a tool for attention—not to capture moments for social media, but to practice really seeing.
-
-## An Invitation
-
-I'm not suggesting everyone needs to wake at 5 AM or walk on beaches. But I am suggesting there's magic in the early hours worth discovering.
-
-Start with once a week. Go outside before sunrise, wherever you are. Watch the world wake up. See what you notice. See how it changes you.
-
-The dawn has been waiting for you.
+If you don't control your schedule, your schedule will control you.
     `,
-    category: "Travel",
-    date: "Dec 8, 2024",
+    category: "Tech & Productivity",
+    date: "Jan 10, 2026",
     readTime: "4 min read",
-    image: post2,
-    slug: "sunrise-walks",
-    author: {
-      name: "Sarah Mitchell",
-      avatar: post1
-    }
-  },
-  {
-    id: 6,
-    title: "Sunday Brunch: Simple Pleasures",
-    excerpt: "Discover the joy of leisurely weekend brunches and how they can become a cherished ritual for connection.",
-    content: `
-There's a reason brunch has become something of a cultural phenomenon. It's not really about the food (though that certainly helps). It's about the permission to linger.
-
-## The Case for Ritual
-
-In our productivity-obsessed culture, rituals offer something radical: permission to simply be. Sunday brunch, done well, is one such ritual.
-
-## Elements of a Perfect Brunch
-
-**1. No rushing**
-
-Brunch should be leisurely. Clear your calendar. Let the morning unfold without time pressure.
-
-**2. Beautiful simplicity**
-
-You don't need elaborate recipes. Fresh bread, good butter, quality eggs, seasonal fruit—simple ingredients, prepared with care.
-
-**3. Thoughtful setting**
-
-Set a proper table. Use the nice dishes. Put flowers in a vase. These small touches signal: this moment matters.
-
-**4. Connection**
-
-Whether alone with a good book or gathered with loved ones, brunch is time for presence and connection.
-
-## My Sunday Spread
-
-Here's what a typical Sunday looks like at my table:
-
-- Sourdough toast with cultured butter
-- Soft-scrambled eggs with fresh herbs
-- Seasonal fruit bowl
-- Pot of good coffee or tea
-- Fresh-squeezed juice
-
-Nothing complicated. Everything delicious.
-
-## Brunch for One
-
-Solo brunch is its own pleasure. A quiet morning with a cookbook, a podcast, or simply your own thoughts. It's self-care in its most nourishing form.
-
-## Brunch as Practice
-
-Beyond the food, Sunday brunch can be a practice in:
-
-**Presence** - Put away your phone. Taste your food. Notice the light.
-
-**Gratitude** - Pause before eating to appreciate the abundance before you.
-
-**Rest** - Resist the urge to multitask. This is time for renewal.
-
-**Connection** - If dining with others, ask meaningful questions. Listen deeply.
-
-## The Week Ahead
-
-There's practical magic in Sunday brunch. It serves as a transition point—a gentle boundary between the week that was and the week to come.
-
-Use this time to reflect, to reset, to set intentions. Not in a rigid, goal-setting way, but with the soft clarity that comes from rest.
-
-## Creating Your Ritual
-
-The perfect brunch is whatever nourishes you. Maybe it's elaborate cooking. Maybe it's takeout eaten mindfully. Maybe it's a smoothie on your balcony.
-
-What matters is the intention: to slow down, to nourish yourself, to treat ordinary life as worthy of ceremony.
-
-This Sunday, try it. Linger a little longer. Savor a little more. See what opens up when you give yourself permission to simply enjoy.
-    `,
-    category: "Food & Lifestyle",
-    date: "Dec 6, 2024",
-    readTime: "5 min read",
-    image: post3,
-    slug: "sunday-brunch",
-    author: {
-      name: "Sarah Mitchell",
-      avatar: post1
-    }
-  },
-  {
-    id: 7,
-    title: "Creating a Calm Home Space",
-    excerpt: "Transform your living space into a sanctuary with these minimalist design principles and cozy touches.",
-    content: `
-Our homes are more than shelter—they're the backdrop to our lives. The spaces we inhabit shape our moods, our thoughts, and our sense of well-being.
-
-## The Philosophy
-
-Creating a calm home isn't about expensive renovations or perfect Instagram aesthetics. It's about intentionally shaping your space to support the life you want to live.
-
-## Principles of Calm Design
-
-**1. Less is more**
-
-Every object in your home either adds to or detracts from your peace. Be ruthless about keeping only what you love, use, or truly need.
-
-**2. Everything has a home**
-
-Clutter often isn't about having too much stuff—it's about stuff without a place. Give everything a designated spot.
-
-**3. Honor natural light**
-
-Keep windows unobstructed. Choose lighter window treatments. Position seating to maximize daylight.
-
-**4. Incorporate nature**
-
-Plants, natural materials, views of greenery—these elements have measurable effects on stress and well-being.
-
-**5. Create zones**
-
-Define different areas for different activities. A reading nook. A work space. A rest space. Clear purposes prevent chaos.
-
-## Room by Room
-
-**The Entryway**
-
-This is your transition space between world and home. Keep it clutter-free with storage for keys, bags, and shoes. Add something beautiful—a plant, artwork, a candle.
-
-**The Living Room**
-
-Choose comfort over style. Soft textures, good lighting, minimal visual clutter. This should be a space that invites lingering.
-
-**The Bedroom**
-
-Reserve this room for rest. No work materials. Minimal electronics. Invest in bedding that makes you want to sink in.
-
-**The Kitchen**
-
-Clear counters support both calm and function. Store appliances you don't use daily. Display only what brings you joy.
-
-## The Art of Cozy
-
-Calm doesn't mean cold or stark. Add warmth through:
-
-- Soft throw blankets
-- Layered lighting (avoid harsh overhead lights)
-- Natural textures (wool, linen, wood, ceramics)
-- Personal touches (photos, treasured objects, books)
-
-## Maintenance Habits
-
-A calm home requires ongoing care:
-
-- 10-minute evening tidy
-- Weekly reset of surfaces
-- Monthly declutter of one area
-- Seasonal deep cleaning and evaluation
-
-## Start Where You Are
-
-You don't need to transform your entire home at once. Start with one surface—a nightstand, a countertop, a desk. Experience the peace that clear space creates. Let that motivate you to continue.
-
-Your home can be a sanctuary. Not through perfection, but through intention. Start today, with whatever you have, wherever you are.
-    `,
-    category: "Home & Decor",
-    date: "Dec 4, 2024",
-    readTime: "7 min read",
     image: post4,
-    slug: "calm-home",
+    slug: "productivity-hacks",
     author: {
-      name: "Sarah Mitchell",
-      avatar: post1
-    }
-  },
-  {
-    id: 8,
-    title: "Self-Care Sunday Rituals",
-    excerpt: "Build a weekly self-care practice that nurtures your mind, body, and soul with these gentle wellness routines.",
-    content: `
-Self-care has become something of a buzzword, often associated with expensive products and picture-perfect bubble baths. But true self-care is simpler—and more profound—than marketing would have you believe.
-
-## Redefining Self-Care
-
-At its core, self-care is the practice of meeting your own needs. It's not selfish; it's necessary. You can't pour from an empty cup.
-
-## The Case for Sunday
-
-While self-care should happen daily, having one day dedicated to deeper restoration is powerful. Sunday works for many—it's a natural pause before the week begins again.
-
-## Building Your Ritual
-
-A good self-care ritual includes four elements:
-
-**1. Body**
-- Extended morning stretch or gentle yoga
-- A longer shower or bath than usual
-- Preparing nourishing food
-- Rest and sleep
-
-**2. Mind**
-- Journaling or reflection
-- Reading for pleasure
-- Learning something new
-- Mental decluttering
-
-**3. Soul**
-- Time in nature
-- Creative expression
-- Connection with loved ones
-- Spiritual practice if that resonates
-
-**4. Space**
-- Tidying your environment
-- Creating beauty in small ways
-- Preparing for the week ahead
-
-## A Sample Sunday
-
-Here's how a self-care Sunday might unfold:
-
-**Morning**
-- Wake naturally, no alarm
-- Gentle stretching in bed
-- Slow breakfast with tea or coffee
-- Journaling: reflection on the week past
-
-**Midday**
-- Outdoor time: walk, garden, sit in sunlight
-- Nourishing lunch
-- Creative time or pleasure reading
-
-**Afternoon**
-- Body care: longer shower, skin care, rest
-- Light preparation for the week (meal prep, outfit planning)
-- 10-minute space tidy
-
-**Evening**
-- Simple, early dinner
-- Connection: call a friend, time with family
-- Gentle wind-down routine
-- Early bedtime
-
-## Making It Your Own
-
-This template is just a starting point. Your self-care Sunday should reflect your unique needs.
-
-Ask yourself:
-- What depletes me during the week?
-- What restores me?
-- What do I always wish I had time for?
-
-Let your answers guide your ritual.
-
-## Resistance and Permission
-
-If self-care feels indulgent or impossible, that's a sign you need it most. Start with fifteen minutes. Give yourself permission.
-
-Remember: taking care of yourself isn't a luxury. It's the foundation for everything else you want to do and be.
-
-This Sunday, try something from this list. Notice how it feels to prioritize yourself. Let that feeling guide you forward.
-    `,
-    category: "Wellness",
-    date: "Dec 2, 2024",
-    readTime: "5 min read",
-    image: post5,
-    slug: "self-care-sunday",
-    author: {
-      name: "Sarah Mitchell",
+      name: "Antony Mwenda",
       avatar: post1
     }
   }

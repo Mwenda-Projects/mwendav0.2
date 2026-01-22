@@ -11,10 +11,10 @@ export function RecentPosts() {
         className="mb-8"
       >
         <h2 className="font-heading text-2xl font-bold text-foreground md:text-3xl">
-          Recent Stories
+          Latest Chronicles
         </h2>
         <p className="mt-2 font-body text-muted-foreground">
-          Fresh perspectives on mindful living and everyday inspiration
+          Deep dives into civil engineering, scaling ventures, and tech-driven productivity.
         </p>
       </motion.div>
 
