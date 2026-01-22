@@ -40,14 +40,12 @@ interface PostEditorProps {
   onSave: () => void;
 }
 
+// Updated Categories to match your new brand
 const CATEGORIES = [
+  "Engineering",
+  "Entrepreneurship",
+  "AI & Tech",
   "Personal Growth",
-  "Lifestyle",
-  "Travel",
-  "Technology",
-  "Wellness",
-  "Faith",
-  "Creativity",
   "Business",
 ];
 
@@ -70,11 +68,11 @@ const PostEditor = ({ post, onClose, onSave }: PostEditorProps) => {
     slug: post?.slug || "",
     content: post?.content || "",
     excerpt: post?.excerpt || "",
-    category: post?.category || "Personal Growth",
+    category: post?.category || "Engineering", // Default to Engineering
     image: post?.image || "",
-    author_name: post?.author_name || "Anthony Mwenda",
-    author_image: post?.author_image || "/lovable-uploads/08fe321c-ac2e-4db0-9e29-d477ae5ff5b4.png",
-    author_role: post?.author_role || "Author & Creator",
+    author_name: post?.author_name || "Antony Mwenda",
+    author_image: post?.author_image || "/author.png", // Pointing to your main author image
+    author_role: post?.author_role || "Founder, Civaro Engineering Ltd",
     read_time: post?.read_time || "5 min read",
     is_featured: post?.is_featured || false,
     is_published: post?.is_published !== undefined ? post.is_published : true,
@@ -108,42 +106,31 @@ const PostEditor = ({ post, onClose, onSave }: PostEditorProps) => {
     setIsSaving(true);
 
     try {
+      const postData = {
+        title: formData.title,
+        slug: formData.slug,
+        content: formData.content,
+        excerpt: formData.excerpt || null,
+        category: formData.category,
+        image: formData.image || null,
+        author_name: formData.author_name,
+        author_image: formData.author_image || null,
+        author_role: formData.author_role || null,
+        read_time: formData.read_time,
+        is_featured: formData.is_featured,
+        is_published: formData.is_published,
+      };
+
       if (post) {
         const { error } = await supabase
           .from("posts")
-          .update({
-            title: formData.title,
-            slug: formData.slug,
-            content: formData.content,
-            excerpt: formData.excerpt || null,
-            category: formData.category,
-            image: formData.image || null,
-            author_name: formData.author_name,
-            author_image: formData.author_image || null,
-            author_role: formData.author_role || null,
-            read_time: formData.read_time,
-            is_featured: formData.is_featured,
-            is_published: formData.is_published,
-          })
+          .update(postData)
           .eq("id", post.id);
 
         if (error) throw error;
         toast.success("Post updated!");
       } else {
-        const { error } = await supabase.from("posts").insert({
-          title: formData.title,
-          slug: formData.slug,
-          content: formData.content,
-          excerpt: formData.excerpt || null,
-          category: formData.category,
-          image: formData.image || null,
-          author_name: formData.author_name,
-          author_image: formData.author_image || null,
-          author_role: formData.author_role || null,
-          read_time: formData.read_time,
-          is_featured: formData.is_featured,
-          is_published: formData.is_published,
-        });
+        const { error } = await supabase.from("posts").insert(postData);
 
         if (error) {
           if (error.message.includes("duplicate")) {
@@ -163,13 +150,13 @@ const PostEditor = ({ post, onClose, onSave }: PostEditorProps) => {
   };
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background text-foreground">
       <header className="border-b bg-card">
         <div className="container mx-auto px-4 py-4 flex items-center gap-4">
           <Button variant="ghost" size="icon" onClick={onClose}>
             <ArrowLeft className="h-5 w-5" />
           </Button>
-          <h1 className="font-display text-2xl font-bold">
+          <h1 className="font-heading text-2xl font-bold">
             {post ? "Edit Post" : "New Post"}
           </h1>
         </div>
