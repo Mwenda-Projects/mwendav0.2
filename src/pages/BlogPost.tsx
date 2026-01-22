@@ -9,14 +9,17 @@ import { getPostBySlug, getRelatedPosts } from "@/data/posts";
 import { toast } from "@/hooks/use-toast";
 import authorImage from "@/assets/author.png";
 import authorImage2 from "@/assets/author-2.jpg";
+
 export default function BlogPost() {
   const {
     slug
   } = useParams<{
     slug: string;
   }>();
+  
   const post = getPostBySlug(slug || "");
   const relatedPosts = getRelatedPosts(slug || "", 3);
+
   if (!post) {
     return <div className="min-h-screen bg-background">
         <Header />
@@ -33,6 +36,7 @@ export default function BlogPost() {
         <Footer />
       </div>;
   }
+
   const handleShare = (platform: string) => {
     const url = window.location.href;
     const text = post.title;
@@ -59,6 +63,7 @@ export default function BlogPost() {
       window.open(shareUrl, "_blank", "noopener,noreferrer");
     }
   };
+
   return <div className="min-h-screen bg-background">
       <Header />
       
@@ -93,13 +98,13 @@ export default function BlogPost() {
               {post.title}
             </h1>
 
-            {/* Meta */}
+            {/* Meta - UPDATED ROLE */}
             <div className="mb-8 flex flex-wrap items-center gap-6">
               <div className="flex items-center gap-3">
                 <img alt="Author" className="h-12 w-12 rounded-full object-cover ring-2 ring-primary/20" src={authorImage} />
                 <div>
                   <p className="font-medium text-card-foreground">Antony Mwenda</p>
-                  <p className="text-sm text-muted-foreground">Writer & Creator</p>
+                  <p className="text-sm text-muted-foreground">Engineer & Entrepreneur</p>
                 </div>
               </div>
               <div className="flex items-center gap-4 text-sm text-muted-foreground">
@@ -155,7 +160,7 @@ export default function BlogPost() {
             })}
             </div>
 
-            {/* Author Bio */}
+            {/* Author Bio - UPDATED TEXT */}
             <div className="mt-12 rounded-xl bg-muted/50 p-6">
               <div className="flex flex-col items-center gap-4 text-center sm:flex-row sm:text-left">
                 <img alt="Author" className="h-20 w-20 rounded-full object-cover ring-2 ring-primary/20" src={authorImage2} />
@@ -164,7 +169,7 @@ export default function BlogPost() {
                     Written by Antony Mwenda
                   </h3>
                   <p className="mt-1 text-sm leading-relaxed text-muted-foreground">
-                    Mwenda is a writer and creator passionate about mindful living, slow travel, and finding beauty in everyday moments. When he's not writing, you'll find him exploring coastlines or enjoying a quiet cup of tea.
+                    Antony is a Civil Engineering student and the founder of Civaro Engineering Ltd. He is dedicated to documenting the build—exploring infrastructure, scaling campus startups, and leveraging AI for business efficiency.
                   </p>
                   <Link to="/about">
                     <Button variant="link" className="mt-2 h-auto p-0 text-primary">
