@@ -43,14 +43,14 @@ const footerLinks = {
     path: "/support"
   }],
   categories: [{
-    name: "Lifestyle",
-    path: "/categories/lifestyle"
+    name: "Engineering",
+    path: "/categories/engineering"
   }, {
-    name: "Travel",
-    path: "/categories/travel"
+    name: "Entrepreneurship",
+    path: "/categories/entrepreneurship"
   }, {
-    name: "Wellness",
-    path: "/categories/wellness"
+    name: "AI & Tech",
+    path: "/categories/ai-tech"
   }, {
     name: "Productivity",
     path: "/categories/productivity"
@@ -63,6 +63,7 @@ const footerLinks = {
     path: "/terms"
   }]
 };
+
 const socialLinks = [{
   icon: Instagram,
   href: "https://instagram.com/mwendahub",
@@ -88,6 +89,7 @@ const socialLinks = [{
   href: "https://youtube.com/@MwendaHub",
   label: "YouTube"
 }];
+
 export function Footer() {
   const currentYear = new Date().getFullYear();
   return <footer className="border-t border-border bg-muted/30">
@@ -101,7 +103,7 @@ export function Footer() {
               </span>
             </Link>
             <p className="mb-6 max-w-xs font-body text-sm leading-relaxed text-muted-foreground">
-              A lifestyle blog dedicated to mindful living, slow travel, and finding joy in the everyday moments that make life beautiful.
+              Documenting the journey through Civil Engineering, entrepreneurship, and the integration of AI in modern industry.
             </p>
             <div className="flex items-center gap-3">
               {socialLinks.map(social => <a key={social.label} href={social.href} aria-label={social.label} className="flex h-9 w-9 items-center justify-center rounded-full bg-muted text-muted-foreground transition-colors hover:bg-primary hover:text-primary-foreground">
