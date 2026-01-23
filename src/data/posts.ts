@@ -55,7 +55,7 @@ This blog isn’t about pretending to have everything figured out. It’s about 
   {
     id: 2,
     title: "Top AI Tools for Student Entrepreneurs",
-    slug: "top-ai-tools-for-student-entrepreneurs",
+    slug: "ai-tools",
     excerpt: "How AI quietly became my secret weapon for balancing campus life and building a business.",
     content: `When I first started trying to build something while still in school, it felt overwhelming. Classes, deadlines, ideas, and no real team or money to fall back on. I wanted to do more than just survive campus life — I wanted to create.
 
