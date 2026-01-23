@@ -1,7 +1,7 @@
 import { useParams, Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Calendar, Clock, ArrowLeft, Share2, Twitter, Facebook, Linkedin, Copy } from "lucide-react";
-import { Helmet } from "react-helmet-async"; // New import for SEO
+import { Helmet } from "react-helmet-async";
 import { Header } from "@/components/blog/Header";
 import { Footer } from "@/components/blog/Footer";
 import { PostCard } from "@/components/blog/PostCard";
@@ -36,7 +36,7 @@ export default function BlogPost() {
     );
   }
 
-  const siteUrl = "https://mwendav0-2.vercel.app"; // Your production URL
+  const siteUrl = "https://mwendav0-2.vercel.app";
   const fullPostUrl = `${siteUrl}/post/${post.slug}`;
 
   const handleShare = (platform: string) => {
@@ -67,21 +67,15 @@ export default function BlogPost() {
 
   return (
     <div className="min-h-screen bg-background">
-      {/* Dynamic SEO Meta Tags */}
       <Helmet>
         <title>{post.title} | TheMwenda Chronicles</title>
         <meta name="description" content={post.excerpt} />
-        
-        {/* Open Graph / Facebook / LinkedIn */}
         <meta property="og:type" content="article" />
-        <meta property="og:url" content={fullPostUrl} />
         <meta property="og:title" content={post.title} />
         <meta property="og:description" content={post.excerpt} />
         <meta property="og:image" content={`${siteUrl}${post.image}`} />
-
-        {/* Twitter */}
+        <meta property="og:url" content={fullPostUrl} />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:url" content={fullPostUrl} />
         <meta name="twitter:title" content={post.title} />
         <meta name="twitter:description" content={post.excerpt} />
         <meta name="twitter:image" content={`${siteUrl}${post.image}`} />
@@ -90,7 +84,7 @@ export default function BlogPost() {
       <Header />
       
       <article>
-        {/* Hero Image */}
+        {/* Hero Image Section */}
         <div className="relative h-[40vh] min-h-[400px] w-full md:h-[50vh]">
           <img src={post.image} alt={post.title} className="h-full w-full object-cover" />
           <div className="absolute inset-0 bg-gradient-to-t from-background via-background/20 to-transparent" />
@@ -102,23 +96,23 @@ export default function BlogPost() {
             animate={{ opacity: 1, y: 0 }} 
             className="rounded-2xl bg-card p-6 shadow-elegant md:p-10"
           >
-            {/* Back Link */}
+            {/* Back Navigation */}
             <Link to="/" className="mb-6 inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground">
               <ArrowLeft className="h-4 w-4" />
               Back to all articles
             </Link>
 
-            {/* Category */}
+            {/* Category Badge */}
             <span className="mb-4 inline-block rounded-full bg-primary/10 px-4 py-1.5 text-xs font-medium text-primary">
               {post.category}
             </span>
 
-            {/* Title */}
+            {/* Post Title */}
             <h1 className="mb-6 font-heading text-3xl font-bold leading-tight text-card-foreground md:text-4xl lg:text-5xl">
               {post.title}
             </h1>
 
-            {/* Meta */}
+            {/* Author and Post Metadata */}
             <div className="mb-8 flex flex-wrap items-center gap-6">
               <div className="flex items-center gap-3">
                 <img alt="Author" className="h-12 w-12 rounded-full object-cover ring-2 ring-primary/20" src={authorImage} />
@@ -128,18 +122,18 @@ export default function BlogPost() {
                 </div>
               </div>
               <div className="flex items-center gap-4 text-sm text-muted-foreground">
-                <span className="flex items-center gap-1.5">
+                <span className="flex items-center gap-1.5 text-nowrap">
                   <Calendar className="h-4 w-4" />
                   {post.date}
                 </span>
-                <span className="flex items-center gap-1.5">
+                <span className="flex items-center gap-1.5 text-nowrap">
                   <Clock className="h-4 w-4" />
                   {post.readTime}
                 </span>
               </div>
             </div>
 
-            {/* Share Buttons */}
+            {/* Social Share Bar */}
             <div className="mb-8 flex items-center gap-3 border-y border-border py-4">
               <span className="flex items-center gap-2 text-sm text-muted-foreground">
                 <Share2 className="h-4 w-4" />
@@ -161,9 +155,9 @@ export default function BlogPost() {
               </div>
             </div>
 
-            {/* Content Rendering */}
+            {/* Main Post Content */}
             <div className="prose prose-lg max-w-none dark:prose-invert prose-headings:font-heading prose-headings:font-bold prose-h2:mt-8 prose-h2:text-2xl prose-p:text-muted-foreground prose-p:leading-relaxed prose-strong:text-card-foreground prose-li:text-muted-foreground">
-              {post.content.split('\n').map((paragraph, index) => {
+              {post.content?.split('\n').map((paragraph, index) => {
                 if (paragraph.startsWith('## ')) {
                   return <h2 key={index} className="text-card-foreground">{paragraph.replace('## ', '')}</h2>;
                 }
@@ -177,7 +171,7 @@ export default function BlogPost() {
               })}
             </div>
 
-            {/* Author Bio */}
+            {/* Detailed Author Bio Box */}
             <div className="mt-12 rounded-xl bg-muted/50 p-6">
               <div className="flex flex-col items-center gap-4 text-center sm:flex-row sm:text-left">
                 <img alt="Author" className="h-20 w-20 rounded-full object-cover ring-2 ring-primary/20" src={authorImage2} />
@@ -200,7 +194,7 @@ export default function BlogPost() {
         </div>
       </article>
 
-      {/* Related Posts */}
+      {/* Related Posts Section (Horizontal Grid) */}
       {relatedPosts.length > 0 && (
         <section className="border-t border-border bg-muted/30 py-12 md:py-16">
           <div className="container max-w-6xl">
@@ -209,10 +203,14 @@ export default function BlogPost() {
             </h2>
             <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
               {relatedPosts.map((relatedPost, index) => (
-                <PostCard key={relatedPost.id} post={{
-                  ...relatedPost,
-                  slug: `/post/${relatedPost.slug}`
-                }} index={index} />
+                <PostCard 
+                  key={relatedPost.id} 
+                  post={{
+                    ...relatedPost,
+                    slug: `/post/${relatedPost.slug}`
+                  }} 
+                  index={index} 
+                />
               ))}
             </div>
           </div>
