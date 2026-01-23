@@ -4,6 +4,7 @@ import post2 from "@/assets/post-2.jpg";
 import post3 from "@/assets/post-3.jpg";
 import post4 from "@/assets/post-4.jpg";
 import post5 from "@/assets/post-5.jpg";
+import post6 from "@/assets/post-6.png"; // New image import
 
 export interface Post {
   id: number;
@@ -53,28 +54,30 @@ This blog isn’t about pretending to have everything figured out. It’s about 
   },
   {
     id: 2,
-    title: "Civaro Engineering: The Vision for 2026",
-    excerpt: "How I am building a civil engineering firm from the ground up while still navigating the academic world.",
-    content: `
-## From Blueprint to Reality
+    title: "Top AI Tools for Student Entrepreneurs",
+    slug: "top-ai-tools-for-student-entrepreneurs",
+    excerpt: "How AI quietly became my secret weapon for balancing campus life and building a business.",
+    content: `When I first started trying to build something while still in school, it felt overwhelming. Classes, deadlines, ideas, and no real team or money to fall back on. I wanted to do more than just survive campus life — I wanted to create.
 
-Building **Civaro Engineering Ltd** isn't just about business; it's about solving infrastructure challenges with a fresh, tech-first perspective. 
+That’s when AI quietly became my secret weapon.
 
-### The Foundation
-Most people think you need a massive office to start an engineering firm. I started with a laptop and a copy of AutoCAD. The goal is to bridge the gap between theoretical classroom knowledge and the grit of the Kenyan construction site.
+**ChatGPT** was the first tool that really helped. Whenever I felt stuck, it helped me think through ideas, write content, plan projects, and even learn things faster than I could on my own. It felt like having someone to bounce ideas off at any time.
 
-### Challenges of a Student Founder
-1. **Time Management:** Balancing site visits with lecture hours.
-2. **Credibility:** Convincing clients that a young engineer can deliver world-class results.
-3. **Scaling:** Moving from solo consulting to a structured team.
+Then there was **Canva AI**. I didn’t know design, but I still needed my ideas to look serious. With Canva, I could create posters, social media posts, and simple branding that made my projects feel real — not like student experiments.
 
-Civaro is more than a name; it's a commitment to precision and integrity in the built environment.
-    `,
-    category: "Civil Engineering Journey",
+**Notion AI** helped me stay sane. School and business can easily become chaos, and having everything organized in one place made a huge difference. It became my digital notebook, planner, and idea bank all in one.
+
+For content, **InVideo AI** made things easier. I could turn simple scripts into videos without showing my face or learning complex editing. It removed a big fear and helped me stay consistent.
+
+Tools like **Grammarly** and AI image generators polished everything — from emails to visuals. Small details matter when you’re trying to be taken seriously, and these tools helped close that gap.
+
+AI didn’t do the work for me. It just made starting easier.
+
+And sometimes, that’s all you need.`,
+    category: "AI & Automation",
     date: "Jan 20, 2026",
     readTime: "6 min read",
-    image: post1,
-    slug: "civaro-engineering-vision",
+    image: post6, // Now using your specified image
     author: {
       name: "Antony Mwenda",
       avatar: post1
