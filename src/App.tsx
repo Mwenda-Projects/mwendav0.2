@@ -3,6 +3,7 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { HelmetProvider } from "react-helmet-async"; // 1. Import the Provider
 import Index from "./pages/Index";
 import About from "./pages/About";
 import Categories from "./pages/Categories";
@@ -22,29 +23,32 @@ const queryClient = new QueryClient();
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Index />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/categories" element={<Categories />} />
-          <Route path="/categories/:category" element={<CategoryPosts />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/post/:slug" element={<BlogPost />} />
-          <Route path="/search" element={<SearchPage />} />
-          <Route path="/support" element={<Support />} />
-          <Route path="/unsubscribe" element={<Unsubscribe />} />
-          <Route path="/privacy" element={<Privacy />} />
-          <Route path="/terms" element={<Terms />} />
-          <Route path="/auth" element={<Auth />} />
-          <Route path="/admin" element={<Admin />} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </BrowserRouter>
-    </TooltipProvider>
+    {/* 2. Wrap everything in HelmetProvider */}
+    <HelmetProvider>
+      <TooltipProvider>
+        <Toaster />
+        <Sonner />
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<Index />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/categories" element={<Categories />} />
+            <Route path="/categories/:category" element={<CategoryPosts />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/post/:slug" element={<BlogPost />} />
+            <Route path="/search" element={<SearchPage />} />
+            <Route path="/support" element={<Support />} />
+            <Route path="/unsubscribe" element={<Unsubscribe />} />
+            <Route path="/privacy" element={<Privacy />} />
+            <Route path="/terms" element={<Terms />} />
+            <Route path="/auth" element={<Auth />} />
+            <Route path="/admin" element={<Admin />} />
+            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </BrowserRouter>
+      </TooltipProvider>
+    </HelmetProvider>
   </QueryClientProvider>
 );
 
