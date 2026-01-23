@@ -4,7 +4,7 @@ import post2 from "@/assets/post-2.jpg";
 import post3 from "@/assets/post-3.jpg";
 import post4 from "@/assets/post-4.jpg";
 import post5 from "@/assets/post-5.jpg";
-import post6 from "@/assets/post-6.png"; // New image import
+import post6 from "@/assets/post-6.png";
 
 export interface Post {
   id: number;
@@ -77,7 +77,7 @@ And sometimes, that’s all you need.`,
     category: "AI & Automation",
     date: "Jan 20, 2026",
     readTime: "6 min read",
-    image: post6, // Now using your specified image
+    image: post6,
     author: {
       name: "Antony Mwenda",
       avatar: post1
@@ -162,8 +162,14 @@ If you don't control your schedule, your schedule will control you.
   }
 ];
 
-export const featuredPosts = posts.slice(0, 3);
-export const recentPosts = posts.slice(3);
+// SORTING LOGIC: Automatically sorts by date (Newest first)
+const sortedPosts = [...posts].sort((a, b) => 
+  new Date(b.date).getTime() - new Date(a.date).getTime()
+);
+
+// Exports that components use to render the UI
+export const featuredPosts = sortedPosts.slice(0, 3);
+export const recentPosts = sortedPosts; // Includes all posts in the "Latest" section
 
 export function getPostBySlug(slug: string): Post | undefined {
   return posts.find(post => post.slug === slug);
@@ -171,9 +177,9 @@ export function getPostBySlug(slug: string): Post | undefined {
 
 export function getRelatedPosts(currentSlug: string, limit = 3): Post[] {
   const currentPost = getPostBySlug(currentSlug);
-  if (!currentPost) return posts.slice(0, limit);
+  if (!currentPost) return sortedPosts.slice(0, limit);
   
-  return posts
+  return sortedPosts
     .filter(post => post.slug !== currentSlug && post.category === currentPost.category)
     .slice(0, limit);
 }
