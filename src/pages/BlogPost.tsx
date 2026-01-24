@@ -1,8 +1,9 @@
 import { useParams, Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { Calendar, Clock, ArrowLeft, Share2, Twitter, Facebook, Linkedin, Copy } from "lucide-react";
+import { Calendar, Clock, ArrowLeft, Share2, Twitter, Facebook, Linkedin, Copy, ShieldAlert, Terminal } from "lucide-react";
 import { Helmet } from "react-helmet-async";
 import { ReactCusdis } from 'react-cusdis';
+import { useEffect } from "react";
 import { Header } from "@/components/blog/Header";
 import { Footer } from "@/components/blog/Footer";
 import { PostCard } from "@/components/blog/PostCard";
@@ -17,6 +18,14 @@ export default function BlogPost() {
   
   const post = getPostBySlug(slug || "");
   const relatedPosts = getRelatedPosts(slug || "", 3);
+
+  // Injects your custom button text into the Cusdis locale
+  useEffect(() => {
+    (window as any).CUSDIS_LOCALE = {
+      ...((window as any).CUSDIS_LOCALE || {}),
+      post: "This Section Will Be Judged. Please Don't type Recklessly 😂😁"
+    };
+  }, []);
 
   if (!post) {
     return (
@@ -95,7 +104,7 @@ export default function BlogPost() {
           <motion.div 
             initial={{ opacity: 0, y: 20 }} 
             animate={{ opacity: 1, y: 0 }} 
-            className="rounded-2xl bg-card p-6 shadow-elegant md:p-10"
+            className="rounded-2xl bg-card p-6 shadow-elegant md:p-10 border border-border/50"
           >
             {/* Back Navigation */}
             <Link to="/" className="mb-6 inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground">
@@ -192,10 +201,23 @@ export default function BlogPost() {
               </div>
             </div>
 
-            {/* CUSTOMIZED COMMENT SECTION */}
-            <div className="mt-16 border-t border-border pt-10">
-              <h3 className="mb-8 font-heading text-2xl font-bold text-card-foreground">Leave a Reply</h3>
-              <div className="rounded-xl overflow-hidden bg-card border border-border p-4">
+            {/* REDESIGNED JUDGMENT ZONE (CUSDIS) */}
+            <div className="mt-20">
+              <div className="flex items-center justify-between mb-6 border-b border-border pb-4">
+                <div className="flex items-center gap-2">
+                  <Terminal className="h-5 w-5 text-primary" />
+                  <h3 className="font-heading text-xl font-bold text-card-foreground">The Judgment Zone</h3>
+                </div>
+                <div className="flex items-center gap-2 px-3 py-1 bg-primary/5 rounded-full border border-primary/10">
+                  <div className="h-2 w-2 rounded-full bg-green-500 animate-pulse" />
+                  <span className="text-[10px] font-mono uppercase tracking-widest text-primary">Moderation Active</span>
+                </div>
+              </div>
+              
+              <div className="bg-muted/30 rounded-xl p-6 border border-dashed border-border relative overflow-hidden">
+                <div className="absolute top-0 right-0 p-2 opacity-5">
+                  <ShieldAlert className="h-32 w-32" />
+                </div>
                 <ReactCusdis
                   attrs={{
                     host: 'https://cusdis.com',
@@ -207,10 +229,10 @@ export default function BlogPost() {
                   }}
                   lang="en"
                 />
-                {/* Note: Cusdis handles the button text via the platform's localization. 
-                  To force custom text in React, we use the customText prop inside attrs.
-                */}
               </div>
+              <p className="mt-4 text-center text-xs text-muted-foreground italic">
+                Thoughtful contributions are indexed. Everything else is discarded.
+              </p>
             </div>
           </motion.div>
         </div>
