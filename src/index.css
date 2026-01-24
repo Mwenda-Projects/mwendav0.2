@@ -272,9 +272,3 @@
 a[href*="lovable.dev"][target="_blank"] {
   display: none !important;
 }
-
-/* --- CUSDIS VISUAL FIX --- */
-/* Makes the Cusdis iframe background transparent to match your card color */
-#cusdis_thread iframe {
-  color-scheme: light dark;
-}
