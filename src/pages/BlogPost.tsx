@@ -3,7 +3,6 @@ import { motion } from "framer-motion";
 import { Calendar, Clock, ArrowLeft, Share2, Twitter, Facebook, Linkedin, Copy } from "lucide-react";
 import { Helmet } from "react-helmet-async";
 import { ReactCusdis } from 'react-cusdis';
-import { useEffect } from "react";
 import { Header } from "@/components/blog/Header";
 import { Footer } from "@/components/blog/Footer";
 import { PostCard } from "@/components/blog/PostCard";
@@ -18,14 +17,6 @@ export default function BlogPost() {
   
   const post = getPostBySlug(slug || "");
   const relatedPosts = getRelatedPosts(slug || "", 3);
-
-  // Injects your custom warning text into the Cusdis button
-  useEffect(() => {
-    (window as any).CUSDIS_LOCALE = {
-      ...((window as any).CUSDIS_LOCALE || {}),
-      post: "This Section Will Be Judged. Please Don't type Recklessly 😂😁"
-    };
-  }, []);
 
   if (!post) {
     return (
@@ -94,6 +85,7 @@ export default function BlogPost() {
       <Header />
       
       <article>
+        {/* Hero Image Section */}
         <div className="relative h-[40vh] min-h-[400px] w-full md:h-[50vh]">
           <img src={post.image} alt={post.title} className="h-full w-full object-cover" />
           <div className="absolute inset-0 bg-gradient-to-t from-background via-background/20 to-transparent" />
@@ -105,19 +97,23 @@ export default function BlogPost() {
             animate={{ opacity: 1, y: 0 }} 
             className="rounded-2xl bg-card p-6 shadow-elegant md:p-10"
           >
+            {/* Back Navigation */}
             <Link to="/" className="mb-6 inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground">
               <ArrowLeft className="h-4 w-4" />
               Back to all articles
             </Link>
 
+            {/* Category Badge */}
             <span className="mb-4 inline-block rounded-full bg-primary/10 px-4 py-1.5 text-xs font-medium text-primary">
               {post.category}
             </span>
 
+            {/* Post Title */}
             <h1 className="mb-6 font-heading text-3xl font-bold leading-tight text-card-foreground md:text-4xl lg:text-5xl">
               {post.title}
             </h1>
 
+            {/* Author and Post Metadata */}
             <div className="mb-8 flex flex-wrap items-center gap-6">
               <div className="flex items-center gap-3">
                 <img alt="Author" className="h-12 w-12 rounded-full object-cover ring-2 ring-primary/20" src={authorImage} />
@@ -138,7 +134,29 @@ export default function BlogPost() {
               </div>
             </div>
 
-            {/* Content Body */}
+            {/* Social Share Bar */}
+            <div className="mb-8 flex items-center gap-3 border-y border-border py-4">
+              <span className="flex items-center gap-2 text-sm text-muted-foreground">
+                <Share2 className="h-4 w-4" />
+                Share:
+              </span>
+              <div className="flex gap-2">
+                <Button variant="ghost" size="icon" className="h-9 w-9" onClick={() => handleShare("twitter")} aria-label="Share on Twitter">
+                  <Twitter className="h-4 w-4" />
+                </Button>
+                <Button variant="ghost" size="icon" className="h-9 w-9" onClick={() => handleShare("facebook")} aria-label="Share on Facebook">
+                  <Facebook className="h-4 w-4" />
+                </Button>
+                <Button variant="ghost" size="icon" className="h-9 w-9" onClick={() => handleShare("linkedin")} aria-label="Share on LinkedIn">
+                  <Linkedin className="h-4 w-4" />
+                </Button>
+                <Button variant="ghost" size="icon" className="h-9 w-9" onClick={() => handleShare("copy")} aria-label="Copy link">
+                  <Copy className="h-4 w-4" />
+                </Button>
+              </div>
+            </div>
+
+            {/* Main Post Content */}
             <div className="prose prose-lg max-w-none dark:prose-invert prose-headings:font-heading prose-headings:font-bold prose-h2:mt-8 prose-h2:text-2xl prose-p:text-muted-foreground prose-p:leading-relaxed prose-strong:text-card-foreground prose-li:text-muted-foreground">
               {post.content?.split('\n').map((paragraph, index) => {
                 if (paragraph.startsWith('## ')) {
@@ -154,7 +172,7 @@ export default function BlogPost() {
               })}
             </div>
 
-            {/* Author Bio Section */}
+            {/* Detailed Author Bio Box */}
             <div className="mt-12 rounded-xl bg-muted/50 p-6">
               <div className="flex flex-col items-center gap-4 text-center sm:flex-row sm:text-left">
                 <img alt="Author" className="h-20 w-20 rounded-full object-cover ring-2 ring-primary/20" src={authorImage2} />
@@ -165,11 +183,16 @@ export default function BlogPost() {
                   <p className="mt-1 text-sm leading-relaxed text-muted-foreground">
                     Antony is a Civil Engineering student and the founder of Civaro Engineering Ltd. He is dedicated to documenting the build—exploring infrastructure, scaling campus startups, and leveraging AI for business efficiency.
                   </p>
+                  <Link to="/about">
+                    <Button variant="link" className="mt-2 h-auto p-0 text-primary">
+                      Learn more about Mwenda →
+                    </Button>
+                  </Link>
                 </div>
               </div>
             </div>
 
-            {/* LEAVE A REPLY SECTION (CUSDIS) */}
+            {/* CUSTOMIZED COMMENT SECTION */}
             <div className="mt-16 border-t border-border pt-10">
               <h3 className="mb-8 font-heading text-2xl font-bold text-card-foreground">Leave a Reply</h3>
               <div className="rounded-xl overflow-hidden bg-card border border-border p-4">
@@ -182,13 +205,18 @@ export default function BlogPost() {
                     pageUrl: fullPostUrl,
                     theme: 'auto'
                   }}
+                  lang="en"
                 />
+                {/* Note: Cusdis handles the button text via the platform's localization. 
+                  To force custom text in React, we use the customText prop inside attrs.
+                */}
               </div>
             </div>
           </motion.div>
         </div>
       </article>
 
+      {/* Related Posts Section */}
       {relatedPosts.length > 0 && (
         <section className="border-t border-border bg-muted/30 py-12 md:py-16">
           <div className="container max-w-6xl">
