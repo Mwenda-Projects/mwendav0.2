@@ -17,13 +17,13 @@ const Terms = () => {
           </h1>
           
           <div className="prose prose-lg max-w-none font-body text-muted-foreground">
-            <p className="text-lg">Last updated: December 2024</p>
+            <p className="text-lg">Last updated: 12th January 2026</p>
             
             <h2 className="mt-8 font-heading text-2xl font-semibold text-foreground">
               Acceptance of Terms
             </h2>
             <p>
-              By accessing and using TheMwenda Chronicles, you accept and agree to be bound by 
+              By accessing and using The Mwenda Chronicles, you accept and agree to be bound by 
               these Terms of Service.
             </p>
             
@@ -39,7 +39,7 @@ const Terms = () => {
               Intellectual Property
             </h2>
             <p>
-              All content, including text, images, and graphics, is the property of TheMwenda Chronicles 
+              All content, including text, images, and graphics, is the property of The Mwenda Chronicles 
               unless otherwise noted. Unauthorized reproduction is prohibited.
             </p>
             
@@ -47,8 +47,8 @@ const Terms = () => {
               User Conduct
             </h2>
             <p>
-              When using our contact form or newsletter subscription, you agree to provide accurate 
-              information and not to use our services for any unlawful purpose.
+              When using my contact form or newsletter subscription, you agree to provide accurate 
+              information and not to use my services for any unlawful purpose.
             </p>
             
             <h2 className="mt-8 font-heading text-2xl font-semibold text-foreground">
@@ -56,14 +56,14 @@ const Terms = () => {
             </h2>
             <p>
               The information provided on this blog is for general informational purposes only. 
-              We make no warranties about the completeness, reliability, or accuracy of this information.
+              I make no warranties about the completeness, reliability, or accuracy of this information.
             </p>
             
             <h2 className="mt-8 font-heading text-2xl font-semibold text-foreground">
               Changes to Terms
             </h2>
             <p>
-              We reserve the right to modify these terms at any time. Continued use of the website 
+              I reserve the right to modify these terms at any time. Continued use of the website 
               constitutes acceptance of any changes.
             </p>
             
@@ -71,7 +71,7 @@ const Terms = () => {
               Contact
             </h2>
             <p>
-              For questions about these Terms, contact us at{" "}
+              For questions about these Terms, contact me at{" "}
               <a href="mailto:mwendantony28@gmail.com" className="text-primary hover:text-accent">
                 mwendantony28@gmail.com
               </a>
