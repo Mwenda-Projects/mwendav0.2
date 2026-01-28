@@ -141,35 +141,35 @@ Don't just graduate with a degree; graduate with a portfolio. Whether it's selli
     excerpt: "Scaling isn’t about grinding 24/7 or skipping classes. It’s about turning effort into leverage. Here is how to grow a campus hustle the smart way.",
     category: "Entrepreneurship",
     content: `
-Most campus side hustles don’t start with some big master plan. They start with survival, curiosity, or opportunity. Mine — and many others I’ve seen — began with one simple thought: **there has to be a better way to make money while still in school.**
+Most campus side hustles don’t start with some big master plan. They start with survival, curiosity, or opportunity. Mine — and many others I’ve seen — began with one simple thought: **there has to be a better way to make money while still in school.
 
 At first, it’s just about covering basics — data, food, transport, small wants. But if you pay attention, that small hustle starts teaching you something bigger: systems, discipline, money flow, and problem-solving. That’s when scaling becomes possible.
 
 ## 1. Make Sure It Actually Works
 Before you think about growth, be honest with yourself. Ask yourself:
-* **Are people willingly paying without being pushed?**
-* **Do customers come back or refer others?**
-* **Can I explain what I do in one clear sentence?**
+   I. Are people willingly paying without being pushed?
+   II. Do customers come back or refer others?
+   III. Can I explain what I do in one clear sentence?
 
 If your hustle only works when you beg, underprice, or over-explain, it’s not ready to scale yet. A solid campus hustle **solves a real problem students already have.**
 
 ## 2. Turn Chaos Into Systems
-Early hustle stages are messy. But chaos does not scale. You need simple systems: one clear price list, standard replies for common questions, and a preferred payment method. **Once things are written down and repeatable, your brain gets free space.**
+Early hustle stages are messy. But chaos does not scale. You need simple systems: one clear price list, standard replies for common questions, and a preferred payment method. **Once things are written down and repeatable, your brain gets free space.
 
 ## 3. Stop Underpricing Yourself
-Most campus hustlers charge too little because they fear losing customers. But scaling is not always about getting more people — **sometimes it’s about getting better ones.** If nobody complains about your prices, they’re probably too low.
+Most campus hustlers charge too little because they fear losing customers. But scaling is not always about getting more people — sometimes it’s about getting better ones. If nobody complains about your prices, they’re probably too low.
 
 ## 4. Buy Back Your Time
-As a student, time is your most limited resource. You cannot attend classes, study, rest, and still do everything in your hustle alone. At some point, you must delegate. **Scaling is less about doing more and more about doing less of the wrong things.**
+As a student, time is your most limited resource. You cannot attend classes, study, rest, and still do everything in your hustle alone. At some point, you must delegate. **Scaling is less about doing more and more about doing less of the wrong things.
 
 ## 5. Use the Internet Properly
 Campus hustles that stay offline grow slowly. A simple digital presence changes everything. Social media builds trust, a simple page explains what you do, and automation saves time. Your hustle should still make progress even when you’re in class. That’s leverage.
 
 ## 6. Reinvest Like an Adult
 One of the biggest mistakes is upgrading lifestyle too early. That first profit feels good, but growth feels better. Instead of spending everything:
-* Reinvest in marketing
-* Upgrade tools
-* Improve branding
+. Reinvest in marketing
+. Upgrade tools
+. Improve branding
 
 Delayed gratification is a superpower most students ignore.
 
