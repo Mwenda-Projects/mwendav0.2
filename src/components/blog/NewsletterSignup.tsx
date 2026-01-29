@@ -1,53 +1,12 @@
-import { useState } from "react";
 import { motion } from "framer-motion";
 import { Mail, Send } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { toast } from "@/hooks/use-toast";
 
 export function NewsletterSignup() {
-  const [email, setEmail] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!email) return;
-
-    setIsLoading(true);
-    
-    try {
-      // Connects directly to your Formspree endpoint
-      const response = await fetch("https://formspree.io/f/mkooewoe", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "Accept": "application/json",
-        },
-        body: JSON.stringify({ email: email }),
-      });
-
-      if (!response.ok) throw new Error("Submission failed");
-
-      setEmail("");
-      toast({
-        title: "Welcome aboard! 🎉",
-        description: "You've successfully subscribed to our newsletter.",
-      });
-    } catch (error: any) {
-      console.error("Newsletter subscription error:", error);
-      toast({
-        title: "Subscription failed",
-        description: "Please try again later.",
-        variant: "destructive",
-      });
-    } finally {
-      setIsLoading(false);
-    }
-  };
-
   return (
     <motion.div
-      id="newsletter-section" // Added this ID for the top button to find
+      id="newsletter-section"
       initial={{ opacity: 0, x: 20 }}
       animate={{ opacity: 1, x: 0 }}
       transition={{ delay: 0.4 }}
@@ -64,23 +23,27 @@ export function NewsletterSignup() {
       <p className="mb-4 font-body text-sm leading-relaxed text-muted-foreground">
         Get weekly inspiration delivered straight to your inbox. No spam, just good vibes.
       </p>
-      <form onSubmit={handleSubmit} className="space-y-3">
+
+      {/* We use a standard HTML form submission here. 
+        Follow.it handles the "Success" redirect and the confirmation email for you.
+      */}
+      <form 
+        action="https://api.follow.it/subscription-form/emxRMS9nSGo1aE1DZjBhMEcvQ0FSL2ZSdzh5SzRLRGNPMzR3UTE0S2g3cnM5QXkrQy8xMDVQR0ZpOGZhMCtva0QrVUhtZ1g5MkNENWd5RWhmd0pyN0xBQ1JPQjl0M0M3VUZsUmxJRDF2QUVrOGt0eTBPMGI1NGtrMDRZMmo5Y1F8UkQyVG90VVIyTEJzb2doSktUdzEyL2VoMEpHTVBFQXRoOFI4WXM2dzRFTT0=/21" 
+        method="post" 
+        target="_blank" 
+        className="space-y-3"
+      >
         <Input
           type="email"
+          name="email" // Crucial for Follow.it to find the email address
           placeholder="Enter your email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
           required
         />
-        <Button type="submit" variant="hero" className="w-full" disabled={isLoading}>
-          {isLoading ? (
-            "Subscribing..."
-          ) : (
-            <div className="flex items-center gap-2">
-              Subscribe
-              <Send className="h-4 w-4" />
-            </div>
-          )}
+        <Button type="submit" variant="hero" className="w-full">
+          <div className="flex items-center gap-2">
+            Subscribe
+            <Send className="h-4 w-4" />
+          </div>
         </Button>
       </form>
     </motion.div>
