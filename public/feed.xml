@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0">
+  <channel>
+    <title>The Mwenda Chronicles</title>
+    <link>https://mwendav0-2.vercel.app</link>
+    <description>Building early — from campus to company.</description>
+    <lastBuildDate>Thu, 29 Jan 2026 19:30:22 GMT</lastBuildDate>
+    
+    <item>
+      <title><![CDATA[Building Before You’re Ready]]></title>
+      <link>https://mwendav0-2.vercel.app/post/building-before-youre-ready</link>
+      <guid isPermaLink="true">https://mwendav0-2.vercel.app/post/building-before-youre-ready</guid>
+      <pubDate>Wed, 21 Jan 2026 21:00:00 GMT</pubDate>
+      <description><![CDATA[Why waiting for perfect conditions keeps most people stuck, and how starting early compounds faster than talent ever will.]]></description>
+    </item>
+    <item>
+      <title><![CDATA[Top AI Tools for Student Entrepreneurs]]></title>
+      <link>https://mwendav0-2.vercel.app/post/ai-tools</link>
+      <guid isPermaLink="true">https://mwendav0-2.vercel.app/post/ai-tools</guid>
+      <pubDate>Mon, 19 Jan 2026 21:00:00 GMT</pubDate>
+      <description><![CDATA[How AI quietly became my secret weapon for balancing campus life and building a business.]]></description>
+    </item>
+    <item>
+      <title><![CDATA[AI Tools That Run My Business]]></title>
+      <link>https://mwendav0-2.vercel.app/post/ai-tools-business</link>
+      <guid isPermaLink="true">https://mwendav0-2.vercel.app/post/ai-tools-business</guid>
+      <pubDate>Sat, 17 Jan 2026 21:00:00 GMT</pubDate>
+      <description><![CDATA[A deep dive into the automation stack I use to handle content creation, site reports, and project management.]]></description>
+    </item>
+    <item>
+      <title><![CDATA[The Campus Hustler’s Manifesto]]></title>
+      <link>https://mwendav0-2.vercel.app/post/campus-hustler-manifesto</link>
+      <guid isPermaLink="true">https://mwendav0-2.vercel.app/post/campus-hustler-manifesto</guid>
+      <pubDate>Wed, 14 Jan 2026 21:00:00 GMT</pubDate>
+      <description><![CDATA[Side hustles aren]]></description>
+    </item>
+    <item>
+      <title><![CDATA[Scaling a Campus Side Hustle: From Small Wins to Serious Income]]></title>
+      <link>https://mwendav0-2.vercel.app/post/scaling-hustles</link>
+      <guid isPermaLink="true">https://mwendav0-2.vercel.app/post/scaling-hustles</guid>
+      <pubDate>Tue, 27 Jan 2026 21:00:00 GMT</pubDate>
+      <description><![CDATA[Scaling isn’t about grinding 24/7 or skipping classes. It’s about turning effort into leverage. Here is how to grow a campus hustle the smart way.]]></description>
+    </item>
+  </channel>
+</rss>
