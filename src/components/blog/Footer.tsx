@@ -158,7 +158,7 @@ export function Footer() {
         {/* Bottom Bar */}
         <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-border pt-8 md:flex-row">
           <p className="font-body text-sm text-muted-foreground">
-            © {currentYear} TheMwenda Chronicles. From OfliX.
+            © {currentYear} TheMwenda Chronicles. Built with OfliX.
           </p>
           <div className="flex items-center gap-4">
             {footerLinks.legal.map(link => <Link key={link.name} to={link.path} className="font-body text-xs text-muted-foreground transition-colors hover:text-primary">
