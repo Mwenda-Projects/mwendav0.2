@@ -114,7 +114,7 @@ January was a **foundation month**, and I’m heading into February ready to sca
     date: "Jan 31, 2026",
     readTime: "5 min read",
     image: post8,
-    slug: "categories/narratives",
+    slug: "january-review",
     author: {
       name: "Antony Mwenda",
       avatar: post1
