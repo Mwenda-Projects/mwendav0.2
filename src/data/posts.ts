@@ -94,21 +94,21 @@ And sometimes, that’s all you need.`,
 
 January has been busy but productive — a month of building, learning, and laying foundations for bigger things.
 
-### 1. Habits That Stick
+## 1. Habits That Stick
 I kept my **Duolingo streak** alive, showing that even small daily habits can set the tone for bigger achievements.
 
-### 2. OfliX – Turning Ideas into Action
+## 2. OfliX – Turning Ideas into Action
 OfliX is my platform helping local businesses get websites and Google presence. It’s not fully live yet, but I’ve started offering real services, and my blog serves as a live demo of what I can create.
 
-### 3. Money Bite 7 – Early Validation
+## 3. Money Bite 7 – Early Validation
 I launched **Money Bite 7**, my YouTube channel sharing practical money and side hustle tips for students. I now have a few early subscribers — each one proving that the content resonates and the work is being noticed.
 
-### 4. Building Relationships
-I met **Dr. Liz and Madam Patricia**, the heads of DMLF, and connected with fellow scholars. These interactions reinforced the value of relationships and support in achieving bigger goals.
+## 4. Building Relationships
+I met ##Dr. Liz and Madam Patricia##, the heads of DMLF, and connected with fellow scholars. These interactions reinforced the value of relationships and support in achieving bigger goals.
 
 January was a **foundation month**, and I’m heading into February ready to scale OfliX, grow Money Bite 7, and keep building habits and projects that matter.
 
-**Question for readers:** What’s one small habit or project you’ve been working on this month that’s making a difference in your life? I’d love to hear your thoughts in the comments!
+## Question for readers: What’s one small habit or project you’ve been working on this month that’s making a difference in your life? I’d love to hear your thoughts in the comments!
     `,
     category: "Personal Narratives",
     date: "Jan 31, 2026",

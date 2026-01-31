@@ -86,7 +86,7 @@ const socialLinks = [{
   label: "LinkedIn"
 }, {
   icon: Youtube,
-  href: "https://youtube.com/@MwendaHub",
+  href: "https://youtube.com/@moneybite7",
   label: "YouTube"
 }];
 

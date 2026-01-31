@@ -50,7 +50,7 @@ const socialLinks = [
   { icon: TikTokIcon, href: "https://tiktok.com/@mwendahub", label: "TikTok" },
   { icon: FacebookIcon, href: "https://facebook.com/MwendaHub", label: "Facebook" },
   { icon: LinkedInIcon, href: "https://linkedin.com/in/mwendahub", label: "LinkedIn" },
-  { icon: Youtube, href: "https://youtube.com/@MwendaHub", label: "YouTube" }
+  { icon: Youtube, href: "https://youtube.com/@moneybite7", label: "YouTube" }
 ];
 
 export function Sidebar() {
