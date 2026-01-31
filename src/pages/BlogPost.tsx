@@ -220,7 +220,7 @@ export default function BlogPost() {
                 />
               </div>
               <p className="mt-4 text-center text-xs text-muted-foreground italic">
-                Thoughtful contributions are indexed. Everything else is discarded.
+                This Section Will Be Judged. Please Don't type Recklessly 😂😁.
               </p>
             </div>
           </motion.div>
