@@ -6,6 +6,7 @@ import post4 from "@/assets/post-4.jpg";
 import post5 from "@/assets/post-5.jpg";
 import post6 from "@/assets/post-6.png";
 import post7 from "@/assets/post-7.png";
+import post8 from "@/assets/post-8.png";
 
 export interface Post {
   id: number;
@@ -86,27 +87,34 @@ And sometimes, that’s all you need.`,
   },
   {
     id: 3,
-    title: "AI Tools That Run My Business",
-    excerpt: "A deep dive into the automation stack I use to handle content creation, site reports, and project management.",
+    title: "January 2026: Quiet Wins and Big Moves",
+    excerpt: "A look back at the small habits, projects, and connections that laid the foundation for bigger things this month.",
     content: `
-## Work Smarter, Not Harder
+## Quiet Wins and Big Moves
 
-In 2026, if you aren't using AI, you are working 10x harder than necessary. Here is the stack I use to keep my ventures running while I'm in class.
+January has been busy but productive — a month of building, learning, and laying foundations for bigger things.
 
-### 1. Project Management
-I use AI-integrated tools to track construction milestones at Civaro. It predicts delays before they happen based on weather data and supply chain speed.
+### 1. Habits That Stick
+I kept my **Duolingo streak** alive, showing that even small daily habits can set the tone for bigger achievements.
 
-### 2. Content Creation
-This very blog uses AI as a thought partner. It helps me structure my reflections and polish my technical tutorials so they are easy for everyone to read.
+### 2. OfliX – Turning Ideas into Action
+OfliX is my platform helping local businesses get websites and Google presence. It’s not fully live yet, but I’ve started offering real services, and my blog serves as a live demo of what I can create.
 
-### 3. Automation
-From automated invoicing to M-Pesa payment reconciliations, automation is the only reason I haven't burnt out yet.
+### 3. Money Bite 7 – Early Validation
+I launched **Money Bite 7**, my YouTube channel sharing practical money and side hustle tips for students. I now have a few early subscribers — each one proving that the content resonates and the work is being noticed.
+
+### 4. Building Relationships
+I met **Dr. Liz and Madam Patricia**, the heads of DMLF, and connected with fellow scholars. These interactions reinforced the value of relationships and support in achieving bigger goals.
+
+January was a **foundation month**, and I’m heading into February ready to scale OfliX, grow Money Bite 7, and keep building habits and projects that matter.
+
+**Question for readers:** What’s one small habit or project you’ve been working on this month that’s making a difference in your life? I’d love to hear your thoughts in the comments!
     `,
-    category: "AI & Automation",
-    date: "Jan 18, 2026",
+    category: "Personal Narratives",
+    date: "Jan 31, 2026",
     readTime: "5 min read",
-    image: post2,
-    slug: "ai-tools-business",
+    image: post8,
+    slug: "categories/narratives",
     author: {
       name: "Antony Mwenda",
       avatar: post1
