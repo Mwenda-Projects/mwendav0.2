@@ -6,19 +6,28 @@ import { Input } from "@/components/ui/input";
 import { motion, AnimatePresence } from "framer-motion";
 import { ThemeToggle } from "@/components/ThemeToggle";
 
-const navLinks = [{
-  name: "Home",
-  path: "/"
-}, {
-  name: "About",
-  path: "/about"
-}, {
-  name: "Categories",
-  path: "/categories"
-}, {
-  name: "Contact",
-  path: "/contact"
-}];
+const navLinks = [
+  {
+    name: "Home",
+    path: "/"
+  }, 
+  {
+    name: "About",
+    path: "/about"
+  }, 
+  {
+    name: "Categories",
+    path: "/categories"
+  }, 
+  {
+    name: "Gallery", // Added Gallery link
+    path: "/gallery"
+  }, 
+  {
+    name: "Contact",
+    path: "/contact"
+  }
+];
 
 export function Header() {
   const navigate = useNavigate();
@@ -48,7 +57,8 @@ export function Header() {
     }
   };
 
-  return <header className="sticky top-0 z-50 w-full border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+  return (
+    <header className="sticky top-0 z-50 w-full border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-16 items-center justify-between md:h-20">
         {/* Logo */}
         <Link to="/" className="flex items-center gap-2">
@@ -59,30 +69,45 @@ export function Header() {
 
         {/* Desktop Navigation */}
         <nav className="hidden items-center gap-8 md:flex">
-          {navLinks.map(link => <Link key={link.name} to={link.path} className="link-underline font-body text-sm font-medium text-muted-foreground transition-colors hover:text-foreground">
+          {navLinks.map(link => (
+            <Link 
+              key={link.name} 
+              to={link.path} 
+              className="link-underline font-body text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+            >
               {link.name}
-            </Link>)}
+            </Link>
+          ))}
         </nav>
 
         {/* Desktop Actions */}
         <div className="hidden items-center gap-3 md:flex">
           <AnimatePresence>
-            {isSearchOpen && <motion.form initial={{
-            width: 0,
-            opacity: 0
-          }} animate={{
-            width: 200,
-            opacity: 1
-          }} exit={{
-            width: 0,
-            opacity: 0
-          }} transition={{
-            duration: 0.2
-          }} onSubmit={handleSearch}>
-                <Input type="search" placeholder="Search articles..." className="h-9" autoFocus value={searchQuery} onChange={e => setSearchQuery(e.target.value)} />
-              </motion.form>}
+            {isSearchOpen && (
+              <motion.form 
+                initial={{ width: 0, opacity: 0 }} 
+                animate={{ width: 200, opacity: 1 }} 
+                exit={{ width: 0, opacity: 0 }} 
+                transition={{ duration: 0.2 }} 
+                onSubmit={handleSearch}
+              >
+                <Input 
+                  type="search" 
+                  placeholder="Search articles..." 
+                  className="h-9" 
+                  autoFocus 
+                  value={searchQuery} 
+                  onChange={e => setSearchQuery(e.target.value)} 
+                />
+              </motion.form>
+            )}
           </AnimatePresence>
-          <Button variant="ghost" size="icon" onClick={() => isSearchOpen && !searchQuery ? setIsSearchOpen(false) : setIsSearchOpen(!isSearchOpen)} aria-label="Toggle search">
+          <Button 
+            variant="ghost" 
+            size="icon" 
+            onClick={() => isSearchOpen && !searchQuery ? setIsSearchOpen(false) : setIsSearchOpen(!isSearchOpen)} 
+            aria-label="Toggle search"
+          >
             <Search className="h-5 w-5" />
           </Button>
           <ThemeToggle />
@@ -94,7 +119,12 @@ export function Header() {
         {/* Mobile Menu Button */}
         <div className="flex items-center gap-2 md:hidden">
           <ThemeToggle />
-          <Button variant="ghost" size="icon" onClick={() => setIsMenuOpen(!isMenuOpen)} aria-label="Toggle menu">
+          <Button 
+            variant="ghost" 
+            size="icon" 
+            onClick={() => setIsMenuOpen(!isMenuOpen)} 
+            aria-label="Toggle menu"
+          >
             {isMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </Button>
         </div>
@@ -102,32 +132,43 @@ export function Header() {
 
       {/* Mobile Menu */}
       <AnimatePresence>
-        {isMenuOpen && <motion.div initial={{
-        height: 0,
-        opacity: 0
-      }} animate={{
-        height: "auto",
-        opacity: 1
-      }} exit={{
-        height: 0,
-        opacity: 0
-      }} transition={{
-        duration: 0.2
-      }} className="border-t border-border md:hidden">
+        {isMenuOpen && (
+          <motion.div 
+            initial={{ height: 0, opacity: 0 }} 
+            animate={{ height: "auto", opacity: 1 }} 
+            exit={{ height: 0, opacity: 0 }} 
+            transition={{ duration: 0.2 }} 
+            className="border-t border-border md:hidden"
+          >
             <div className="container py-4">
               <form onSubmit={handleSearch} className="mb-4">
-                <Input type="search" placeholder="Search articles..." className="w-full" value={searchQuery} onChange={e => setSearchQuery(e.target.value)} />
+                <Input 
+                  type="search" 
+                  placeholder="Search articles..." 
+                  className="w-full" 
+                  value={searchQuery} 
+                  onChange={e => setSearchQuery(e.target.value)} 
+                />
               </form>
               <nav className="flex flex-col gap-3">
-                {navLinks.map(link => <Link key={link.name} to={link.path} onClick={() => setIsMenuOpen(false)} className="font-body text-base font-medium text-muted-foreground transition-colors hover:text-foreground">
+                {navLinks.map(link => (
+                  <Link 
+                    key={link.name} 
+                    to={link.path} 
+                    onClick={() => setIsMenuOpen(false)} 
+                    className="font-body text-base font-medium text-muted-foreground transition-colors hover:text-foreground"
+                  >
                     {link.name}
-                  </Link>)}
+                  </Link>
+                ))}
               </nav>
               <Button variant="hero" className="mt-4 w-full" onClick={scrollToNewsletter}>
                 Subscribe
               </Button>
             </div>
-          </motion.div>}
+          </motion.div>
+        )}
       </AnimatePresence>
-    </header>;
+    </header>
+  );
 }
