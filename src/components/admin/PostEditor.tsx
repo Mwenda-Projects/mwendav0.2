@@ -40,8 +40,8 @@ interface PostEditorProps {
   onSave: () => void;
 }
 
-// Updated Categories to match your new brand
 const CATEGORIES = [
+  "Milestones", // Added for your birthday
   "Engineering",
   "Entrepreneurship",
   "AI & Tech",
@@ -50,33 +50,21 @@ const CATEGORIES = [
 ];
 
 const PostEditor = ({ post, onClose, onSave }: PostEditorProps) => {
-  const [formData, setFormData] = useState<{
-    title: string;
-    slug: string;
-    content: string;
-    excerpt: string;
-    category: string;
-    image: string;
-    author_name: string;
-    author_image: string;
-    author_role: string;
-    read_time: string;
-    is_featured: boolean;
-    is_published: boolean;
-  }>({
+  const [formData, setFormData] = useState({
     title: post?.title || "",
     slug: post?.slug || "",
     content: post?.content || "",
     excerpt: post?.excerpt || "",
-    category: post?.category || "Engineering", // Default to Engineering
+    category: post?.category || "Engineering",
     image: post?.image || "",
     author_name: post?.author_name || "Antony Mwenda",
-    author_image: post?.author_image || "/author.png", // Pointing to your main author image
+    author_image: post?.author_image || "/author.png",
     author_role: post?.author_role || "Founder, Civaro Engineering Ltd",
     read_time: post?.read_time || "5 min read",
     is_featured: post?.is_featured || false,
     is_published: post?.is_published !== undefined ? post.is_published : true,
   });
+  
   const [isSaving, setIsSaving] = useState(false);
 
   const generateSlug = (title: string) => {
@@ -122,6 +110,7 @@ const PostEditor = ({ post, onClose, onSave }: PostEditorProps) => {
       };
 
       if (post) {
+        // Update existing post logic
         const { error } = await supabase
           .from("posts")
           .update(postData)
@@ -130,7 +119,8 @@ const PostEditor = ({ post, onClose, onSave }: PostEditorProps) => {
         if (error) throw error;
         toast.success("Post updated!");
       } else {
-        const { error } = await supabase.from("posts").insert(postData);
+        // Insert new post logic (for your birthday sample)
+        const { error } = await supabase.from("posts").insert([postData]);
 
         if (error) {
           if (error.message.includes("duplicate")) {
@@ -254,7 +244,7 @@ const PostEditor = ({ post, onClose, onSave }: PostEditorProps) => {
                 </div>
               </div>
 
-              <div className="grid gap-4 md:grid-cols-3">
+              <div className="grid gap-4 md:grid-cols-3 border-t pt-6 mt-6">
                 <div className="space-y-2">
                   <Label htmlFor="author_name">Author Name</Label>
                   <Input
@@ -281,7 +271,7 @@ const PostEditor = ({ post, onClose, onSave }: PostEditorProps) => {
                 </div>
               </div>
 
-              <div className="flex flex-wrap gap-6">
+              <div className="flex flex-wrap gap-6 border-t pt-6">
                 <div className="flex items-center gap-2">
                   <Switch
                     id="is_published"
