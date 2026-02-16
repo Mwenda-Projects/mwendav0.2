@@ -1,56 +1,70 @@
 import { useParams, Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { Calendar, Clock, ArrowLeft, Share2, Twitter, Facebook, Linkedin, Copy, ShieldAlert } from "lucide-react";
+import { Calendar, Clock, ArrowLeft, Share2, Twitter, Facebook, Linkedin, Copy, ShieldAlert, Loader2 } from "lucide-react";
 import { Helmet } from "react-helmet-async";
 import { ReactCusdis } from 'react-cusdis';
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Header } from "@/components/blog/Header";
 import { Footer } from "@/components/blog/Footer";
 import { PostCard } from "@/components/blog/PostCard";
 import { Button } from "@/components/ui/button";
-import { getPostBySlug, getRelatedPosts } from "@/data/posts";
+import { supabase } from "@/lib/supabase";
 import { toast } from "@/hooks/use-toast";
 import authorImage from "@/assets/author.png";
 import authorImage2 from "@/assets/author-2.jpg";
 
 export default function BlogPost() {
   const { slug } = useParams<{ slug: string }>();
-  
-  const post = getPostBySlug(slug || "");
-  const relatedPosts = getRelatedPosts(slug || "", 3);
+  const [post, setPost] = useState<any>(null);
+  const [relatedPosts, setRelatedPosts] = useState<any[]>([]);
+  const [loading, setLoading] = useState(true);
 
-  // Injects your custom warning text into the Cusdis button
   useEffect(() => {
+    async function fetchPostData() {
+      setLoading(true);
+      try {
+        // 1. Fetch the specific post from Supabase
+        const { data: postData, error: postError } = await supabase
+          .from('posts')
+          .select('*')
+          .eq('slug', slug)
+          .single();
+
+        if (postError) {
+          console.error("Supabase Error:", postError.message);
+        } else {
+          setPost(postData);
+
+          // 2. Fetch related posts from the same category
+          const { data: relatedData } = await supabase
+            .from('posts')
+            .select('*')
+            .eq('category', postData.category)
+            .neq('slug', slug)
+            .limit(3);
+          
+          setRelatedPosts(relatedData || []);
+        }
+      } catch (err) {
+        console.error("Connection Error:", err);
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    if (slug) fetchPostData();
+
     (window as any).CUSDIS_LOCALE = {
       ...((window as any).CUSDIS_LOCALE || {}),
       post: "This Section Will Be Judged. Please Don't type Recklessly 😂😁"
     };
-  }, []);
-
-  if (!post) {
-    return (
-      <div className="min-h-screen bg-background">
-        <Header />
-        <main className="container py-20 text-center">
-          <h1 className="font-heading text-3xl font-bold text-foreground">Post Not Found</h1>
-          <p className="mt-4 text-muted-foreground">The article you're looking for doesn't exist.</p>
-          <Link to="/">
-            <Button className="mt-6">
-              <ArrowLeft className="mr-2 h-4 w-4" />
-              Back to Home
-            </Button>
-          </Link>
-        </main>
-        <Footer />
-      </div>
-    );
-  }
+  }, [slug]);
 
   const siteUrl = "https://mwendav0-2.vercel.app";
-  const fullPostUrl = `${siteUrl}/post/${post.slug}`;
+  const fullPostUrl = `${siteUrl}/post/${slug}`;
 
   const handleShare = (platform: string) => {
-    const text = post.title;
+    const text = post?.title || "";
     let shareUrl = "";
     switch (platform) {
       case "twitter":
@@ -64,38 +78,43 @@ export default function BlogPost() {
         break;
       case "copy":
         navigator.clipboard.writeText(fullPostUrl);
-        toast({
-          title: "Link copied!",
-          description: "The article link has been copied to your clipboard."
-        });
+        toast({ title: "Link copied!", description: "The article link has been copied to your clipboard." });
         return;
     }
-    if (shareUrl) {
-      window.open(shareUrl, "_blank", "noopener,noreferrer");
-    }
+    if (shareUrl) window.open(shareUrl, "_blank", "noopener,noreferrer");
   };
+
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-background flex items-center justify-center">
+        <Loader2 className="h-10 w-10 animate-spin text-primary" />
+      </div>
+    );
+  }
+
+  if (!post) {
+    return (
+      <div className="min-h-screen bg-background text-center py-20">
+        <Header />
+        <h1 className="text-3xl font-bold">Post Not Found</h1>
+        <Link to="/"><Button className="mt-6">Back to Home</Button></Link>
+        <Footer />
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-background">
       <Helmet>
         <title>{post.title} | TheMwenda Chronicles</title>
         <meta name="description" content={post.excerpt} />
-        <meta property="og:type" content="article" />
-        <meta property="og:title" content={post.title} />
-        <meta property="og:description" content={post.excerpt} />
-        <meta property="og:image" content={`${siteUrl}${post.image}`} />
-        <meta property="og:url" content={fullPostUrl} />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content={post.title} />
-        <meta name="twitter:description" content={post.excerpt} />
-        <meta name="twitter:image" content={`${siteUrl}${post.image}`} />
       </Helmet>
 
       <Header />
       
       <article>
         <div className="relative h-[40vh] min-h-[400px] w-full md:h-[50vh]">
-          <img src={post.image} alt={post.title} className="h-full w-full object-cover" />
+          <img src={post.image_url || post.image} alt={post.title} className="h-full w-full object-cover" />
           <div className="absolute inset-0 bg-gradient-to-t from-background via-background/20 to-transparent" />
         </div>
 
@@ -105,9 +124,8 @@ export default function BlogPost() {
             animate={{ opacity: 1, y: 0 }} 
             className="rounded-2xl bg-card p-6 shadow-elegant md:p-10 border border-border/50"
           >
-            <Link to="/" className="mb-6 inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground">
-              <ArrowLeft className="h-4 w-4" />
-              Back to all articles
+            <Link to="/" className="mb-6 inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground">
+              <ArrowLeft className="h-4 w-4" /> Back to all articles
             </Link>
 
             <span className="mb-4 inline-block rounded-full bg-primary/10 px-4 py-1.5 text-xs font-medium text-primary">
@@ -127,86 +145,51 @@ export default function BlogPost() {
                 </div>
               </div>
               <div className="flex items-center gap-4 text-sm text-muted-foreground">
-                <span className="flex items-center gap-1.5 text-nowrap">
-                  <Calendar className="h-4 w-4" />
-                  {post.date}
-                </span>
-                <span className="flex items-center gap-1.5 text-nowrap">
-                  <Clock className="h-4 w-4" />
-                  {post.readTime}
-                </span>
+                <span className="flex items-center gap-1.5"><Calendar className="h-4 w-4" /> {new Date(post.created_at).toLocaleDateString()}</span>
+                <span className="flex items-center gap-1.5"><Clock className="h-4 w-4" /> {post.read_time || "3 min"}</span>
               </div>
             </div>
 
             <div className="mb-8 flex items-center gap-3 border-y border-border py-4">
-              <span className="flex items-center gap-2 text-sm text-muted-foreground">
-                <Share2 className="h-4 w-4" />
-                Share:
-              </span>
+              <span className="flex items-center gap-2 text-sm text-muted-foreground"><Share2 className="h-4 w-4" /> Share:</span>
               <div className="flex gap-2">
-                <Button variant="ghost" size="icon" className="h-9 w-9" onClick={() => handleShare("twitter")} aria-label="Share on Twitter">
-                  <Twitter className="h-4 w-4" />
-                </Button>
-                <Button variant="ghost" size="icon" className="h-9 w-9" onClick={() => handleShare("facebook")} aria-label="Share on Facebook">
-                  <Facebook className="h-4 w-4" />
-                </Button>
-                <Button variant="ghost" size="icon" className="h-9 w-9" onClick={() => handleShare("linkedin")} aria-label="Share on LinkedIn">
-                  <Linkedin className="h-4 w-4" />
-                </Button>
-                <Button variant="ghost" size="icon" className="h-9 w-9" onClick={() => handleShare("copy")} aria-label="Copy link">
-                  <Copy className="h-4 w-4" />
-                </Button>
+                <Button variant="ghost" size="icon" onClick={() => handleShare("twitter")}><Twitter className="h-4 w-4" /></Button>
+                <Button variant="ghost" size="icon" onClick={() => handleShare("facebook")}><Facebook className="h-4 w-4" /></Button>
+                <Button variant="ghost" size="icon" onClick={() => handleShare("linkedin")}><Linkedin className="h-4 w-4" /></Button>
+                <Button variant="ghost" size="icon" onClick={() => handleShare("copy")}><Copy className="h-4 w-4" /></Button>
               </div>
             </div>
 
-            <div className="prose prose-lg max-w-none dark:prose-invert prose-headings:font-heading prose-headings:font-bold prose-h2:mt-8 prose-h2:text-2xl prose-p:text-muted-foreground prose-p:leading-relaxed prose-strong:text-card-foreground prose-li:text-muted-foreground">
-              {post.content?.split('\n').map((paragraph, index) => {
+            {/* FULL CONTENT LOGIC FROM YOUR ORIGINAL FILE */}
+            <div className="prose prose-lg max-w-none dark:prose-invert prose-headings:font-heading prose-headings:font-bold prose-h2:mt-8 prose-h2:text-2xl prose-p:text-muted-foreground prose-p:leading-relaxed prose-strong:text-card-foreground">
+              {post.content?.split('\n').map((paragraph: string, index: number) => {
                 if (paragraph.startsWith('## ')) {
                   return <h2 key={index} className="text-card-foreground">{paragraph.replace('## ', '')}</h2>;
                 }
                 if (paragraph.startsWith('**') && paragraph.endsWith('**')) {
                   return <p key={index}><strong>{paragraph.replace(/\*\*/g, '')}</strong></p>;
                 }
-                if (paragraph.trim() === '') {
-                  return null;
-                }
+                if (paragraph.trim() === '') return null;
                 return <p key={index}>{paragraph}</p>;
               })}
             </div>
 
             <div className="mt-12 rounded-xl bg-muted/50 p-6">
-              <div className="flex flex-col items-center gap-4 text-center sm:flex-row sm:text-left">
+              <div className="flex flex-col items-center gap-4 sm:flex-row">
                 <img alt="Author" className="h-20 w-20 rounded-full object-cover ring-2 ring-primary/20" src={authorImage2} />
                 <div>
-                  <h3 className="font-heading text-lg font-semibold text-card-foreground">
-                    Written by Antony Mwenda
-                  </h3>
-                  <p className="mt-1 text-sm leading-relaxed text-muted-foreground">
-                    Antony is a Civil Engineering student and the founder of Civaro Engineering Ltd. He is dedicated to documenting the build—exploring infrastructure, scaling campus startups, and leveraging AI for business efficiency.
-                  </p>
-                  <Link to="/about">
-                    <Button variant="link" className="mt-2 h-auto p-0 text-primary">
-                      Learn more about Mwenda →
-                    </Button>
-                  </Link>
+                  <h3 className="font-heading text-lg font-semibold text-card-foreground">Written by Antony Mwenda</h3>
+                  <p className="mt-1 text-sm leading-relaxed text-muted-foreground">Antony is a Civil Engineering student and the founder of Civaro Engineering Ltd.</p>
                 </div>
               </div>
             </div>
 
-            {/* REDESIGNED JUDGMENT ZONE (CUSDIS) */}
+            {/* CUSDIS SECTION */}
             <div className="mt-20">
               <div className="flex items-center justify-between mb-6 border-b border-border pb-4">
                 <h3 className="font-heading text-xl font-bold text-card-foreground">The Judgment Zone</h3>
-                <div className="flex items-center gap-2 px-3 py-1 bg-primary/5 rounded-full border border-primary/10">
-                  <div className="h-2 w-2 rounded-full bg-green-500 animate-pulse" />
-                  <span className="text-[10px] font-mono uppercase tracking-widest text-primary">Moderation Active</span>
-                </div>
               </div>
-              
-              <div className="bg-muted/30 rounded-xl p-6 border border-dashed border-border relative overflow-hidden">
-                <div className="absolute top-0 right-0 p-2 opacity-5">
-                  <ShieldAlert className="h-32 w-32" />
-                </div>
+              <div className="bg-muted/30 rounded-xl p-6 border border-dashed border-border">
                 <ReactCusdis
                   attrs={{
                     host: 'https://cusdis.com',
@@ -219,28 +202,20 @@ export default function BlogPost() {
                   lang="en"
                 />
               </div>
-              <p className="mt-4 text-center text-xs text-muted-foreground italic">
-                This Section Will Be Judged. Please Don't type Recklessly 😂😁.
-              </p>
             </div>
           </motion.div>
         </div>
       </article>
 
       {relatedPosts.length > 0 && (
-        <section className="border-t border-border bg-muted/30 py-12 md:py-16">
+        <section className="border-t border-border bg-muted/30 py-12">
           <div className="container max-w-6xl">
-            <h2 className="mb-8 font-heading text-2xl font-bold text-foreground md:text-3xl">
-              Related Articles
-            </h2>
+            <h2 className="mb-8 font-heading text-2xl font-bold text-foreground">Related Articles</h2>
             <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
               {relatedPosts.map((relatedPost, index) => (
                 <PostCard 
                   key={relatedPost.id} 
-                  post={{
-                    ...relatedPost,
-                    slug: `/post/${relatedPost.slug}`
-                  }} 
+                  post={{...relatedPost, slug: `/post/${relatedPost.slug}`}} 
                   index={index} 
                 />
               ))}
