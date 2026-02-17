@@ -170,7 +170,7 @@ export default function BlogPost() {
               {post.content?.split('\n').map((paragraph: string, index: number) => {
                  if (paragraph.startsWith('## ')) return <h2 key={index}>{paragraph.replace('## ', '')}</h2>;
                  if (paragraph.trim() === '') return null;
-                 return <p key={index} className="mb-4">{paragraph}</p>;
+                 return <p key={index} className="mb-4 leading-relaxed">{paragraph}</p>;
               })}
             </div>
 
@@ -184,18 +184,27 @@ export default function BlogPost() {
               </div>
             </div>
 
-            <div className="mt-20">
-              <h3 className="font-bold text-xl mb-6">The Judgment Zone</h3>
-              <ReactCusdis
-                attrs={{
-                  host: 'https://cusdis.com',
-                  appId: '4d14ac1f-8d2f-488f-ae37-3d1d356ff691',
-                  pageId: post.slug,
-                  pageTitle: post.title,
-                  pageUrl: fullPostUrl,
-                  theme: 'auto'
-                }}
-              />
+            {/* Restored Judgment Zone Styling */}
+            <div className="mt-16 border-t pt-10">
+              <div className="flex items-center justify-between mb-6">
+                <h3 className="text-2xl font-bold font-heading">The Judgment Zone</h3>
+              </div>
+              
+              <div className="rounded-xl bg-muted/30 p-4 md:p-8 border border-border/50">
+                <ReactCusdis
+                  attrs={{
+                    host: 'https://cusdis.com',
+                    appId: '4d14ac1f-8d2f-488f-ae37-3d1d356ff691',
+                    pageId: post.slug,
+                    pageTitle: post.title,
+                    pageUrl: fullPostUrl,
+                    theme: 'auto'
+                  }}
+                />
+              </div>
+              <p className="mt-4 text-center text-xs text-muted-foreground italic">
+                This Section Will Be Judged. Please Don't type Recklessly 😂😁
+              </p>
             </div>
           </motion.div>
         </div>
