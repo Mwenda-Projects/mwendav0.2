@@ -1,6 +1,6 @@
 import { useParams, Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { Calendar, Clock, ArrowLeft, Share2, Twitter, Facebook, Linkedin, Copy, ShieldAlert, Loader2 } from "lucide-react";
+import { Calendar, Clock, ArrowLeft, Loader2 } from "lucide-react";
 import { Helmet } from "react-helmet-async";
 import { ReactCusdis } from 'react-cusdis';
 import { useEffect, useState } from "react";
@@ -24,7 +24,6 @@ export default function BlogPost() {
       try {
         setLoading(true);
         
-        // 1. Fetch main post
         const { data: postData, error: postError } = await supabase
           .from('posts')
           .select('*')
@@ -34,7 +33,6 @@ export default function BlogPost() {
         if (postError) {
           console.error("Supabase error:", postError.message);
         } else if (postData) {
-          // Format the main post for the UI
           const formattedPost = {
             ...postData,
             date: new Date(postData.created_at).toLocaleDateString(),
@@ -43,7 +41,6 @@ export default function BlogPost() {
           };
           setPost(formattedPost);
 
-          // 2. Fetch related posts
           const { data: relatedData } = await supabase
             .from('posts')
             .select('*')
@@ -53,7 +50,6 @@ export default function BlogPost() {
             .limit(3);
           
           if (relatedData) {
-            // "Translate" related posts for the PostCard component
             const formattedRelated = relatedData.map(p => ({
               ...p,
               date: new Date(p.created_at).toLocaleDateString(),
@@ -71,9 +67,7 @@ export default function BlogPost() {
       }
     }
 
-    if (slug) {
-      fetchPostData();
-    }
+    if (slug) fetchPostData();
 
     (window as any).CUSDIS_LOCALE = {
       ...((window as any).CUSDIS_LOCALE || {}),
@@ -83,27 +77,6 @@ export default function BlogPost() {
 
   const siteUrl = "https://mwendav0-2.vercel.app";
   const fullPostUrl = `${siteUrl}/post/${slug}`;
-
-  const handleShare = (platform: string) => {
-    const text = post?.title || "Article";
-    let shareUrl = "";
-    switch (platform) {
-      case "twitter":
-        shareUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(fullPostUrl)}`;
-        break;
-      case "facebook":
-        shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(fullPostUrl)}`;
-        break;
-      case "linkedin":
-        shareUrl = `https://www.linkedin.com/shareArticle?mini=true&url=${encodeURIComponent(fullPostUrl)}&title=${encodeURIComponent(text)}`;
-        break;
-      case "copy":
-        navigator.clipboard.writeText(fullPostUrl);
-        toast({ title: "Link copied!", description: "The article link has been copied." });
-        return;
-    }
-    if (shareUrl) window.open(shareUrl, "_blank", "noopener,noreferrer");
-  };
 
   if (loading) {
     return (
@@ -142,7 +115,11 @@ export default function BlogPost() {
         </div>
 
         <div className="container relative -mt-32 max-w-4xl pb-16 md:-mt-40">
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="rounded-2xl bg-card p-6 shadow-elegant md:p-10 border border-border/50">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="rounded-2xl bg-card p-6 shadow-elegant md:p-10 border border-border/50"
+          >
             <Link to="/" className="mb-6 inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground">
               <ArrowLeft className="h-4 w-4" /> Back to all articles
             </Link>
@@ -155,7 +132,11 @@ export default function BlogPost() {
 
             <div className="mb-8 flex flex-wrap items-center gap-6">
               <div className="flex items-center gap-3">
-                <img alt="Author" className="h-12 w-12 rounded-full object-cover ring-2 ring-primary/20" src={authorImage} />
+                <img
+                  alt="Author"
+                  className="h-12 w-12 rounded-full object-cover ring-2 ring-primary/20"
+                  src={authorImage}
+                />
                 <div>
                   <p className="font-medium text-card-foreground">Antony Mwenda</p>
                 </div>
@@ -166,17 +147,19 @@ export default function BlogPost() {
               </div>
             </div>
 
-            <div className="prose prose-lg max-w-none dark:prose-invert mb-12">
-              {post.content?.split('\n').map((paragraph: string, index: number) => {
-                 if (paragraph.startsWith('## ')) return <h2 key={index}>{paragraph.replace('## ', '')}</h2>;
-                 if (paragraph.trim() === '') return null;
-                 return <p key={index} className="mb-4 leading-relaxed">{paragraph}</p>;
-              })}
-            </div>
+            {/* ✅ THE FIX: render HTML content properly */}
+            <div
+              className="prose prose-lg max-w-none dark:prose-invert mb-12 prose-headings:font-heading prose-a:text-primary prose-img:rounded-2xl prose-blockquote:border-l-primary prose-blockquote:text-muted-foreground prose-strong:text-foreground"
+              dangerouslySetInnerHTML={{ __html: post.content }}
+            />
 
             <div className="mt-12 rounded-xl bg-muted/50 p-6">
               <div className="flex flex-col items-center gap-4 sm:flex-row">
-                <img alt="Author" className="h-20 w-20 rounded-full object-cover ring-2 ring-primary/20" src={authorImage2} />
+                <img
+                  alt="Author"
+                  className="h-20 w-20 rounded-full object-cover ring-2 ring-primary/20"
+                  src={authorImage2}
+                />
                 <div>
                   <h3 className="font-bold">Written by Antony Mwenda</h3>
                   <p className="text-sm text-muted-foreground">Civil Engineering student & Founder of Civaro Engineering Ltd.</p>
@@ -184,7 +167,6 @@ export default function BlogPost() {
               </div>
             </div>
 
-            {/* Restored Judgment Zone Styling */}
             <div className="mt-16 border-t pt-10">
               <div className="flex items-center justify-between mb-6">
                 <h3 className="text-2xl font-bold font-heading">The Judgment Zone</h3>
