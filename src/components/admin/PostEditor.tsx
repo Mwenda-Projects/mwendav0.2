@@ -170,7 +170,6 @@ const PostEditor = ({ post, onClose, onSave }: PostEditorProps) => {
       author_image: authorImage || null,
       is_published: isPublished,
       is_featured: isFeatured,
-      updated_at: new Date().toISOString(),
     };
 
     try {
