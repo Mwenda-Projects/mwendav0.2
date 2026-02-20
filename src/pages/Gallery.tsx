@@ -17,9 +17,7 @@ const Gallery = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [selectedItem, setSelectedItem] = useState<GalleryItem | null>(null);
 
-  useEffect(() => {
-    fetchGallery();
-  }, []);
+  useEffect(() => { fetchGallery(); }, []);
 
   const fetchGallery = async () => {
     setIsLoading(true);
@@ -27,22 +25,15 @@ const Gallery = () => {
       const { data, error } = await supabase.storage
         .from(GALLERY_BUCKET)
         .list("", { sortBy: { column: "created_at", order: "desc" } });
-
       if (error) throw error;
-
       const items: GalleryItem[] = (data || [])
         .filter((f) => f.name !== ".emptyFolderPlaceholder")
         .map((file) => {
-          const { data: urlData } = supabase.storage
-            .from(GALLERY_BUCKET)
-            .getPublicUrl(file.name);
+          const { data: urlData } = supabase.storage.from(GALLERY_BUCKET).getPublicUrl(file.name);
           const ext = file.name.split(".").pop()?.toLowerCase() || "";
-          const type: "image" | "video" = ["mp4", "mov", "webm", "ogg"].includes(ext)
-            ? "video"
-            : "image";
+          const type: "image" | "video" = ["mp4", "mov", "webm", "ogg"].includes(ext) ? "video" : "image";
           return { name: file.name, url: urlData.publicUrl, type };
         });
-
       setGalleryItems(items);
     } catch (err) {
       console.error("Gallery load error:", err);
@@ -69,18 +60,16 @@ const Gallery = () => {
     }
   };
 
-  // Format file name nicely for display
   const formatName = (name: string) => {
     return name
-      .replace(/^\d+-[a-z0-9]+\./, '') // remove timestamp-random prefix
-      .replace(/\.[^.]+$/, '')           // remove extension
+      .replace(/^\d+-[a-z0-9]+\./, '')
+      .replace(/\.[^.]+$/, '')
       .replace(/-/g, ' ')
       .replace(/\b\w/g, (c) => c.toUpperCase());
   };
 
   return (
     <div className="min-h-screen bg-background text-foreground font-sans pb-20">
-      {/* Nav */}
       <nav className="sticky top-0 z-40 w-full border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
         <div className="container flex h-16 items-center justify-between md:h-20 max-w-6xl mx-auto px-6">
           <Link to="/" className="flex items-center gap-2">
@@ -88,31 +77,24 @@ const Gallery = () => {
               The<span className="text-primary">Mwenda Chronicles</span>
             </span>
           </Link>
-          <Link
-            to="/"
-            className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors flex items-center gap-1"
-          >
+          <Link to="/" className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors flex items-center gap-1">
             <ChevronLeft className="h-4 w-4" /> Back to Blog
           </Link>
         </div>
       </nav>
 
-      {/* Header */}
       <header className="py-16 px-6 text-center max-w-4xl mx-auto animate-in fade-in slide-in-from-bottom-4 duration-700">
         <div className="flex justify-center mb-4">
           <div className="p-3 bg-primary/10 rounded-2xl">
             <ImageIcon className="h-8 w-8 text-primary" />
           </div>
         </div>
-        <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight mb-4 font-heading">
-          The Visual Chronicles
-        </h1>
+        <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight mb-4 font-heading">The Visual Chronicles</h1>
         <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
           A collection of moments, milestones, and the messy process of building empires.
         </p>
       </header>
 
-      {/* Grid */}
       <main className="max-w-6xl mx-auto px-6">
         {isLoading ? (
           <div className="flex flex-col items-center justify-center py-32 gap-4">
@@ -135,19 +117,12 @@ const Gallery = () => {
                 className="group relative cursor-pointer overflow-hidden rounded-2xl bg-muted transition-all duration-500 hover:shadow-2xl border border-border"
                 onClick={() => setSelectedItem(item)}
               >
-                {/* Media */}
                 <div className="relative h-80 w-full overflow-hidden bg-black">
                   {item.type === "video" ? (
                     <>
-                      <video
-                        src={item.url}
-                        className="h-full w-full object-cover opacity-80"
-                        muted
+                      <video src={item.url} className="h-full w-full object-cover opacity-80" muted
                         onMouseOver={(e) => e.currentTarget.play()}
-                        onMouseOut={(e) => {
-                          e.currentTarget.pause();
-                          e.currentTarget.currentTime = 0;
-                        }}
+                        onMouseOut={(e) => { e.currentTarget.pause(); e.currentTarget.currentTime = 0; }}
                       />
                       <div className="absolute inset-0 flex items-center justify-center">
                         <div className="bg-white/20 backdrop-blur-md p-4 rounded-full">
@@ -156,30 +131,17 @@ const Gallery = () => {
                       </div>
                     </>
                   ) : (
-                    <img
-                      src={item.url}
-                      alt={formatName(item.name)}
-                      className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
-                    />
+                    <img src={item.url} alt={formatName(item.name)} className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
                   )}
                 </div>
-
-                {/* Download Button */}
                 <button
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    handleDownload(item.url, item.name);
-                  }}
+                  onClick={(e) => { e.stopPropagation(); handleDownload(item.url, item.name); }}
                   className="absolute top-4 right-4 p-3 bg-white/90 hover:bg-primary hover:text-white text-gray-900 rounded-xl shadow-lg opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-[-10px] group-hover:translate-y-0"
                 >
                   <Download className="h-5 w-5" />
                 </button>
-
-                {/* Label */}
                 <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent p-6 translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
-                  {item.type === "video" && (
-                    <span className="text-white/60 text-xs font-bold uppercase tracking-widest mb-1 block">Video</span>
-                  )}
+                  {item.type === "video" && <span className="text-white/60 text-xs font-bold uppercase tracking-widest mb-1 block">Video</span>}
                   <h3 className="text-white text-xl font-semibold">{formatName(item.name)}</h3>
                 </div>
               </div>
@@ -188,41 +150,20 @@ const Gallery = () => {
         )}
       </main>
 
-      {/* Lightbox */}
       {selectedItem && (
-        <div
-          className="fixed inset-0 z-[60] flex items-center justify-center bg-black/95 p-4 animate-in fade-in duration-300"
-          onClick={() => setSelectedItem(null)}
-        >
+        <div className="fixed inset-0 z-[60] flex items-center justify-center bg-black/95 p-4 animate-in fade-in duration-300" onClick={() => setSelectedItem(null)}>
           <button className="absolute top-6 right-6 text-white hover:text-primary transition-colors">
             <X className="h-8 w-8" />
           </button>
-
-          <div
-            className="relative max-w-5xl w-full flex flex-col items-center"
-            onClick={(e) => e.stopPropagation()}
-          >
+          <div className="relative max-w-5xl w-full flex flex-col items-center" onClick={(e) => e.stopPropagation()}>
             {selectedItem.type === "video" ? (
-              <video
-                src={selectedItem.url}
-                controls
-                autoPlay
-                className="max-h-[75vh] w-auto rounded-lg shadow-2xl"
-              />
+              <video src={selectedItem.url} controls autoPlay className="max-h-[75vh] w-auto rounded-lg shadow-2xl" />
             ) : (
-              <img
-                src={selectedItem.url}
-                alt={formatName(selectedItem.name)}
-                className="max-h-[75vh] w-auto rounded-lg shadow-2xl"
-              />
+              <img src={selectedItem.url} alt={formatName(selectedItem.name)} className="max-h-[75vh] w-auto rounded-lg shadow-2xl" />
             )}
-
             <div className="mt-6 flex items-center gap-4">
               <h3 className="text-white text-xl font-medium">{formatName(selectedItem.name)}</h3>
-              <Button
-                onClick={() => handleDownload(selectedItem.url, selectedItem.name)}
-                className="rounded-full"
-              >
+              <Button onClick={() => handleDownload(selectedItem.url, selectedItem.name)} className="rounded-full">
                 <Download className="mr-2 h-4 w-4" /> Download
               </Button>
             </div>
@@ -231,7 +172,17 @@ const Gallery = () => {
       )}
 
       <footer className="mt-20 py-10 border-t border-border text-center text-muted-foreground text-sm">
-        <p>© 2026 The Mwenda Chronicles • Built with OfliX</p>
+        <p>
+          © 2026 The Mwenda Chronicles. Built with{" "}
+          <a
+            href="https://oflix-lac.vercel.app"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-primary font-semibold hover:underline transition-colors"
+          >
+            OfliX
+          </a>
+        </p>
       </footer>
     </div>
   );

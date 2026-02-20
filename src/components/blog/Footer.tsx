@@ -26,76 +26,41 @@ const LinkedInIcon = () => (
 );
 
 const footerLinks = {
-  explore: [{
-    name: "Home",
-    path: "/"
-  }, {
-    name: "About",
-    path: "/about"
-  }, {
-    name: "Categories",
-    path: "/categories"
-  }, {
-    name: "Contact",
-    path: "/contact"
-  }, {
-    name: "Support",
-    path: "/support"
-  }],
-  categories: [{
-    name: "Engineering",
-    path: "/categories/engineering"
-  }, {
-    name: "Entrepreneurship",
-    path: "/categories/entrepreneurship"
-  }, {
-    name: "AI & Tech",
-    path: "/categories/ai-tech"
-  }, {
-    name: "Productivity",
-    path: "/categories/productivity"
-  }],
-  legal: [{
-    name: "Privacy Policy",
-    path: "/privacy"
-  }, {
-    name: "Terms of Service",
-    path: "/terms"
-  }]
+  explore: [
+    { name: "Home", path: "/" },
+    { name: "About", path: "/about" },
+    { name: "Categories", path: "/categories" },
+    { name: "Contact", path: "/contact" },
+    { name: "Support", path: "/support" },
+  ],
+  categories: [
+    { name: "Engineering", path: "/categories/engineering" },
+    { name: "Entrepreneurship", path: "/categories/entrepreneurship" },
+    { name: "AI & Tech", path: "/categories/ai-tech" },
+    { name: "Productivity", path: "/categories/productivity" },
+  ],
+  legal: [
+    { name: "Privacy Policy", path: "/privacy" },
+    { name: "Terms of Service", path: "/terms" },
+  ],
 };
 
-const socialLinks = [{
-  icon: Instagram,
-  href: "https://instagram.com/mwendahub",
-  label: "Instagram"
-}, {
-  icon: XIcon,
-  href: "https://x.com/MwendaHub",
-  label: "X"
-}, {
-  icon: TikTokIcon,
-  href: "https://tiktok.com/@mwendahub",
-  label: "TikTok"
-}, {
-  icon: FacebookIcon,
-  href: "https://facebook.com/MwendaHub",
-  label: "Facebook"
-}, {
-  icon: LinkedInIcon,
-  href: "https://linkedin.com/in/mwendahub",
-  label: "LinkedIn"
-}, {
-  icon: Youtube,
-  href: "https://youtube.com/@moneybite7",
-  label: "YouTube"
-}];
+const socialLinks = [
+  { icon: Instagram, href: "https://instagram.com/mwendahub", label: "Instagram" },
+  { icon: XIcon, href: "https://x.com/MwendaHub", label: "X" },
+  { icon: TikTokIcon, href: "https://tiktok.com/@mwendahub", label: "TikTok" },
+  { icon: FacebookIcon, href: "https://facebook.com/MwendaHub", label: "Facebook" },
+  { icon: LinkedInIcon, href: "https://linkedin.com/in/mwendahub", label: "LinkedIn" },
+  { icon: Youtube, href: "https://youtube.com/@moneybite7", label: "YouTube" },
+];
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
-  return <footer className="border-t border-border bg-muted/30">
+  return (
+    <footer className="border-t border-border bg-muted/30">
       <div className="container py-12 md:py-16">
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
-          {/* About Section - UPDATED TO MATCH HEADER */}
+          {/* About */}
           <div className="lg:col-span-1">
             <Link to="/" className="mb-4 inline-block">
               <span className="font-heading text-2xl font-bold text-foreground">
@@ -106,49 +71,55 @@ export function Footer() {
               Documenting the journey through Civil Engineering, entrepreneurship, and the integration of AI in modern industry.
             </p>
             <div className="flex items-center gap-3">
-              {socialLinks.map(social => <a key={social.label} href={social.href} aria-label={social.label} className="flex h-9 w-9 items-center justify-center rounded-full bg-muted text-muted-foreground transition-colors hover:bg-primary hover:text-primary-foreground">
+              {socialLinks.map((social) => (
+                <a
+                  key={social.label}
+                  href={social.href}
+                  aria-label={social.label}
+                  className="flex h-9 w-9 items-center justify-center rounded-full bg-muted text-muted-foreground transition-colors hover:bg-primary hover:text-primary-foreground"
+                >
                   <social.icon className="h-4 w-4" />
-                </a>)}
+                </a>
+              ))}
             </div>
           </div>
 
-          {/* Explore Links */}
+          {/* Explore */}
           <div>
-            <h4 className="mb-4 font-heading text-base font-semibold text-foreground">
-              Explore
-            </h4>
+            <h4 className="mb-4 font-heading text-base font-semibold text-foreground">Explore</h4>
             <ul className="space-y-2">
-              {footerLinks.explore.map(link => <li key={link.name}>
+              {footerLinks.explore.map((link) => (
+                <li key={link.name}>
                   <Link to={link.path} className="font-body text-sm text-muted-foreground transition-colors hover:text-primary">
                     {link.name}
                   </Link>
-                </li>)}
+                </li>
+              ))}
             </ul>
           </div>
 
-          {/* Categories Links */}
+          {/* Categories */}
           <div>
-            <h4 className="mb-4 font-heading text-base font-semibold text-foreground">
-              Categories
-            </h4>
+            <h4 className="mb-4 font-heading text-base font-semibold text-foreground">Categories</h4>
             <ul className="space-y-2">
-              {footerLinks.categories.map(link => <li key={link.name}>
+              {footerLinks.categories.map((link) => (
+                <li key={link.name}>
                   <Link to={link.path} className="font-body text-sm text-muted-foreground transition-colors hover:text-primary">
                     {link.name}
                   </Link>
-                </li>)}
+                </li>
+              ))}
             </ul>
           </div>
 
-          {/* Contact Section */}
+          {/* Contact */}
           <div>
-            <h4 className="mb-4 font-heading text-base font-semibold text-foreground">
-              Get in Touch
-            </h4>
-            <p className="mb-4 font-body text-sm text-muted-foreground">
-              Based in Nairobi, Kenya
-            </p>
-            <a className="inline-flex items-center gap-2 font-body text-sm text-primary transition-colors hover:text-accent" href="mailto:mwendantony28@gmail.com">
+            <h4 className="mb-4 font-heading text-base font-semibold text-foreground">Get in Touch</h4>
+            <p className="mb-4 font-body text-sm text-muted-foreground">Based in Nairobi, Kenya</p>
+            <a
+              className="inline-flex items-center gap-2 font-body text-sm text-primary transition-colors hover:text-accent"
+              href="mailto:mwendantony28@gmail.com"
+            >
               <Mail className="h-4 w-4" />
               mwendantony28@gmail.com
             </a>
@@ -158,14 +129,29 @@ export function Footer() {
         {/* Bottom Bar */}
         <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-border pt-8 md:flex-row">
           <p className="font-body text-sm text-muted-foreground">
-            © {currentYear} TheMwenda Chronicles. Built with OfliX.
+            © {currentYear} The Mwenda Chronicles. Built with{" "}
+            <a
+              href="https://oflix-lac.vercel.app"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-primary font-semibold hover:underline transition-colors"
+            >
+              OfliX
+            </a>
           </p>
           <div className="flex items-center gap-4">
-            {footerLinks.legal.map(link => <Link key={link.name} to={link.path} className="font-body text-xs text-muted-foreground transition-colors hover:text-primary">
+            {footerLinks.legal.map((link) => (
+              <Link
+                key={link.name}
+                to={link.path}
+                className="font-body text-xs text-muted-foreground transition-colors hover:text-primary"
+              >
                 {link.name}
-              </Link>)}
+              </Link>
+            ))}
           </div>
         </div>
       </div>
-    </footer>;
+    </footer>
+  );
 }
